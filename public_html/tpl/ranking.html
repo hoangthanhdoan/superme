@@ -1,0 +1,80 @@
+<!-- BEGIN: main -->
+<div id="ranking_area">
+    <div class="toolbar top">
+        <div class="row chon_cap_do">
+            <div class="tieu_de">{language.chon_cap_do}</div>
+            <select name="game_mode" class="cac_cap_do xem_thu_hang">
+                <option value="1">{language.thi_quoc_gia}</option>
+                <option value="2">{language.thi_quoc_te}</option>
+                <option value="3">{language.thi_the_gioi}</option>
+            </select>
+            <div class="tieu_de">{language.chon_man}</div>
+            <select name="game_key" class="cac_man_choi xem_thu_hang">
+                <option value="game_name_face">{language.ten_va_khuon_mat}</option>
+                <option value="game_random_binary">{language.so_nhi_phan}</option>
+                <option value="game_random_number">{language.so_ngau_nhien}</option>
+                <option value="game_abstract_image">{language.hinh_anh_truu_tuong}</option>
+                <option value="game_speed_number">{language.nho_so_nhanh}</option>
+                <option value="game_historic_date">{language.nam_lich_su}</option>
+                <option value="game_random_word">{language.tu_ngau_nhien}</option>
+                <option value="game_spoken_number">{language.nghe_nho_so}</option>
+                <option value="game_random_card">{language.bai_ngau_nhien}</option>
+                <option value="game_speed_card">{language.nho_bai_nhanh}</option>
+            </select>
+            <div class="icon col-sm"></div>
+        </div>
+        <div class="row thong_tin_loc">
+            <div class="tieu_de">{language.noi_song}</div>
+            <select class="noi_song xem_thu_hang">
+                <option value="0">{language.tat_ca}</option>
+                {FILE "_noi_song.html"}
+            </select>
+            <div class="tieu_de">{language.do_tuoi}</div>
+            <select class="do_tuoi xem_thu_hang">
+                <option value="0">{language.tat_ca}</option>
+                <option value="1">0-12 {language.tuoi}</option>
+                <option value="2">13-17 {language.tuoi}</option>
+                <option value="3">18-59 {language.tuoi}</option>
+                <option value="4">&gt; 59 {language.tuoi}</option>
+            </select>
+            <div class="tieu_de">{language.thoi_gian}</div>
+            <select class="thoi_gian xem_thu_hang">
+                <option value="0">{language.hom_nay}</option>
+                <option value="1">{language.hom_qua}</option>
+                <option value="2">{language.tuan_nay}</option>
+                <option value="3">7 {language.ngay_truoc}</option>
+                <option value="4" selected>30 {language.ngay_truoc}</option>
+                <option value="5">60 {language.ngay_truoc}</option>
+                <option value="6">90 {language.ngay_truoc}</option>
+                <option value="7">{language.nam_nay}</option>
+            </select>
+            <div class="thu_hang col-sm">{language.xep_hang_cua_hang}: <span class="thu_hang_cua_ban">-</span></div>
+        </div>
+    </div>
+    <div class="content">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col" class="text-center">{language.stt}</th>
+              <th scope="col" class="text-center">{language.ho_ten}</th>
+              <th scope="col" class="text-center">{language.do_tuoi}</th>
+              <th scope="col" class="text-center">{language.noi_song}</th>
+              <th scope="col" class="text-center">{language.diem_so}</th>
+              <th scope="col" class="text-center">{language.chi_tiet}</th>
+            </tr>
+          </thead>
+          <tbody class="ds_xephang">
+                <tr><td colspan='6'>{language.dang_tai}</td></tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    language_diem_so = "{language.diem_so}";
+    language_ngay = "{language.ngay}";
+    language_thoi_gian_nho = "{language.thoi_gian_nho}";
+    language_thoi_gian_tra_loi = "{language.thoi_gian_tra_loi}";
+</script>
+<script src="tpl/js/ranking.js?v={app_version}" ></script>
+
+<!-- END: main -->

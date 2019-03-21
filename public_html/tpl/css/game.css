@@ -1,0 +1,320 @@
+.lines_40 .cot, .lines_30 .cot, .lines_5 .cot, .lines_1 .cot{
+    display:inline-table; 
+    width: 19px;
+    text-align:center;
+    border-right: 1px solid #fff;
+}
+.lines_40 .cot.sohang, .lines_30 .cot.sohang , .lines_5 .cot.sohang, .lines_1 .cot.sohang {
+    width: 60px;
+    text-align: right;
+}
+.lines_40 .cot input, .lines_30 .cot input, .lines_5 .cot input, .lines_1 .cot input{
+    width: 100%;
+    border: 0px solid #efefef;
+    text-align:center;
+    min-width:17px;
+    padding: 0px;
+    border-radius: 0px;
+    font-size: smaller
+}
+
+
+.lines_30 .cot.sohang{
+    width: 85px;
+}
+.lines_30 .cot{
+    width: 25px;
+}
+.lines_30 .cot input{
+    min-width:20px;
+}
+
+.lines_5 .cot{
+    width: 155px;
+}
+.lines_5 .cot input{
+    min-width:30px;
+}
+
+.lines_1 .cot{
+    width: 90%;
+}
+.lines_1 .cot input{
+    min-width:50px;
+}
+
+.cot input::-webkit-outer-spin-button,
+.cot input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+.cot input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+.mothang:hover{background-color: #eee;}
+.mothang{border-bottom: 1px solid #efefef}
+.col_border{
+    border-right:1px solid !important; 
+}
+#game_area .traloi input{background: transparent}
+#game_area .traloi input.dung{}
+#game_area .traloi input.sai{background-color:rgb(255,65,65) !important;color: #fff}
+#game_area .cot input:hover, #game_area .cot input:focus{
+    background-color:rgb(40,160,254) !important;
+    color: #fff
+}
+#game_area .traloi input {cursor:pointer; border-bottom: 1px solid #efefef !important}
+
+#game_area .toolbar.top{
+    height: 50px;
+}
+#game_area .toolbar .display.clock{
+    float:left;
+    font-family: monospace;
+    font-size: x-large;
+    font-weight: bold;
+}
+#game_area .toolbar .boqua, #game_area .toolbar .ketthuc{
+    /*color: transparent;*/
+    width:100px;
+    height: 30px;
+    background: center center url(../images/button_border.svg) no-repeat;
+    background-size: contain;
+    float: right;
+    cursor: pointer;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: smaller;
+}
+
+#game_area #game_info, #home #select_game, #game_area ._audio_game #game_exam, #profile_area .content{
+    background: top right url(../images/game_bg_top.svg) no-repeat;
+    background-size: 35%;
+    width: 100%;
+}
+
+#game_area #game_info #content, #home #select_game #content, #game_area ._audio_game #game_exam #content, #profile_area form {
+    background: bottom left url(../images/game_bg_bottomleft.svg) no-repeat;
+    background-size: 30%;
+}
+
+#game_area #game_info #content ul {
+    background: 49px 7px url(../images/line_vertical.svg) no-repeat;
+    background-size: auto 105px;
+}
+#game_area #game_info #content li {
+    font-weight:bold;
+    text-align: left;
+    list-style: none;
+    background: transparent left center url('../images/list_icon.svg') no-repeat;
+    background-size: 20px;
+    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #ccc;
+}
+#game_area #game_info #content li.duocchon{
+    list-style: none;
+    background: transparent left center url('../images/list_icon_active.svg') no-repeat;
+    background-size: 20px;
+    color: #000;
+}
+
+#game_area select.action.chia_nhom {
+    /*background: transparent center center url(../images/display_mode.svg) no-repeat;
+    background-size: 100%;
+    border-radius: 15px;*/
+    /*width: 130px;*/
+    padding: 0 20px 0 10px;
+    margin-right: 20px;
+    margin-top: 5px;
+    padding-left: 10px;
+    font-size: 10pt;
+    float:right;
+    background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
+    background-size: 10px 10px;
+    background-size: 10px 10px;
+    border-radius: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+#game_area .display.mark{
+    background: transparent;
+    font-weight: bold;
+    color: rgb(40, 160, 254);
+    float: left;
+}
+
+
+#game_area ._image_game .mothang:hover{
+    background-color: transparent;
+}
+
+#game_area ._image_game .cot .content{
+    border: 1px solid #ccc;
+    padding: 15px 5px;
+    margin: 0px 5px;
+}
+#game_area ._image_game .cot:hover, #game_area ._word_game .cot:hover{
+    background: #fff ;
+}
+#game_area ._image_game .cot .content .image img{
+    width: 100%;
+}
+
+#game_area ._image_game .cot input, #game_area ._word_game .cot input{
+    background: transparent ;
+    border-bottom: 1px dashed #ddd;
+    width: 80%; 
+}
+#game_area ._image_game .mothang{
+    border: 0px;
+    padding-top: 10px;
+}
+
+#game_area ._word_game .mothang{
+    border: 0px;
+}
+#game_area .game_random_word .mothang{
+    display: inline-grid;
+}
+#game_area ._word_game .mothang .cot{
+    padding-right: 5px;
+}
+#game_area ._word_game.lines_5 .cot {
+    width: 169px;
+}
+
+#game_area ._word_game .cot .content{
+    border: 1px solid #ccc;
+    text-align: left;
+    padding: 0px 3px;
+    font-size: small;
+}
+
+#game_area ._word_game .cot .content div {
+    display: inline-table;
+}
+#game_area ._word_game .cot .content div.stt {
+    color: #999;
+    font-size: smaller;
+    text-align: center;
+}
+#game_area ._word_game .cot .content div.title {
+    float: right;
+    text-align: right;
+}
+#game_area ._word_game .cot input{
+    width: 100%;
+    text-align: right;
+}
+
+
+#game_area ._word_game.game_historic_date .cot{
+    background: transparent;
+}
+
+#game_area ._word_game.game_historic_date .cot .content div.title {
+    float: none;
+    width: 20%;
+    text-align: right;
+}
+#game_area ._word_game.game_historic_date .cot .content div.subtitle {
+    padding-left: 20px;
+    text-align: left;
+}
+
+#game_area .game_spoken_number #content .speaking_number{
+    background: transparent center center url(../images/listen.svg) no-repeat;
+    background-size: 100px;
+    width: 100%;
+    height: 100%;
+}
+#game_area .game_spoken_number #content .speaking_number{
+    color: transparent;    
+}
+
+#game_area ._card_game .cot .content:hover{
+    background: #f00;
+}
+
+#game_area ._card_game .cot .content{
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+#game_area ._card_game img{
+    width: 180px;
+}
+
+#game_area ._card_game .mothang{
+    width: 50%;
+    margin:auto;
+    display: flex;
+    flex-wrap: wrap;
+    border: 0px solid;
+}
+
+#game_area ._card_game #left, #game_area ._card_game .left{
+    background: 17px center url(../images/card_previous.svg) no-repeat;
+    background-size: 25px;
+    color: transparent;
+}
+
+#game_area ._card_game #right, #game_area ._card_game .right{
+    background: right center url(../images/card_next.svg) no-repeat;
+    background-size: 25px;
+    margin-right: 16px;
+    color: transparent;
+}
+
+#game_area .group_card_1 .cot, #game_area .group_card_0 .cot, #game_area ._card_game .cot{
+    width: 100%;
+    margin:  auto;
+}
+#game_area .group_card_2 .cot{
+    width: 50%;
+    margin:  auto;
+}
+#game_area .group_card_3 .cot{
+    width: 33%;
+    margin: auto;
+}
+#game_area .group_card_4 .cot{
+    width: 25%;
+    margin: auto;
+}
+#game_area .group_card_5 .cot{
+    width: 20%;
+    margin: auto;
+}
+#game_area .group_card_6 .cot{
+    width: 16.6%;
+    margin: auto;
+}
+#game_area .group_card_7 .cot{
+    width: 14.2%;
+    margin: auto;
+}
+#game_area .group_card_8 .cot{
+    width: 12.5%;
+    margin: auto;
+}
+#game_area .group_card_9 .cot{
+    width: 11.1%;
+    margin: auto;
+}
+
+#game_area ._card_game .chon_bo_bai {
+    padding: 0px 8px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    margin: 2px;
+}
+#game_area ._card_game .chon_bo_bai.duocchon, #game_area ._card_game .chon_bo_bai:hover{
+    background: #999;
+    color: #fff;
+}

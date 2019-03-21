@@ -1,0 +1,427 @@
+.container-fluid{
+    padding: 0px
+}
+body{
+    margin:auto;
+    width: 1000px;
+    max-width: 100%;
+    background: rgb(243, 243, 243);
+    overflow: overlay;
+}
+thead{
+    text-align: center;
+    background-color: #ddd;
+}
+a:hover{text-decoration: unset;}
+.action,.pointer{
+    cursor: pointer
+}
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#header{
+    height: 80px;
+    margin:auto;
+    width: 900px;
+    padding: 8px 0px;
+}
+#header div#logo{
+    float:left;
+    color: transparent;
+    background: transparent center center url(../images/logo.svg) no-repeat;
+    background-size: 100%;
+    width: 100px;
+    height: 50px;
+}
+#header div#menu{
+    float:right;
+}
+#header div#menu .menu-item{
+    padding: 10px;
+    /*
+    padding-left: 30px;
+    */
+    display: inline-flex;
+}
+#header div#menu .menu-item.logout{
+    padding-left: 30px;
+
+}
+/*#header div#menu .menu-item.login, 
+#header div#menu .menu-item.logout{
+    background: center left url(../images/login.svg) no-repeat;
+    background-size: 25px;
+}
+*/
+.menu-item i {
+    color: darkblue;
+}
+
+#header div#menu .menu-item.active, #header div#menu .menu-item:hover{
+    font-weight: bold;
+}
+
+#header .language_code{
+    padding: 0 20px 0 10px;
+    background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
+    background-size: 10px 10px;
+    border-radius: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+#wrapper{
+    margin:auto;
+    width: 1000px;
+    max-width: 100%;
+    /*height: 600px;*/
+    min-height: 80%;
+}
+
+
+#home .logo{
+    margin: auto;
+    background: center center url(../images/logo-vertical.svg) no-repeat;
+    background-size: 90px;
+    height: 100px;
+}
+
+#home #content{
+    text-align: left;
+    
+}
+#home .chon_cap_do, #home .chon_man{
+    margin: auto;
+    width: 500px;
+}
+#home .chon_cap_do {
+    padding-top: 35px;
+}
+#home .chon_man{
+    padding-top: 10px;
+}
+#home .chon_cap_do .tieu_de, #home .chon_man .tieu_de{
+    font-weight: 500;
+    padding: 5px 12px;
+}
+
+#home .chon_cap_do .cac_cap_do, #home .chon_man .cac_man_choi{
+    width: 100%;
+    padding: 5px 12px;
+    background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
+    background-size: 15px 15px;
+    border-radius: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+#home .chon_cap_do .cac_cap_do, #home .chon_man .cac_man_choi:focus {
+    outline: transparent;
+}
+#home div.submit{
+    margin: auto;
+    width: 100px;
+    height: 100px;
+}
+    
+#home button[type=submit], #profile_area div.submit button{
+    border: 0px;
+    background: transparent center center url(../images/button_border_larger.svg) no-repeat;
+    background-size: contain;
+    height: 100%;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#game_area .game_embed, .main_screen{
+    margin:auto; 
+}
+#game_area .game_embed #content, .main_screen #content{
+    width:100%;
+    margin:auto; 
+    overflow: auto;
+    height: 80%;
+}
+.main_screen #content{
+    overflow: auto;
+    height: auto;
+}
+
+#game_area, #home, #login_area, #lichsu_choigame, #ranking_area, #profile_area {
+    text-align: center;
+    background: #fff;
+    min-width:900px;
+    width: 900px;
+    max-width:100%;
+    margin: auto;
+    padding: 20px
+}
+#lichsu_choigame {
+    background: transparent;
+    padding: 0px;
+    height: 95%;
+    overflow-y: auto;
+}
+#profile_area{
+    text-align: left;
+}
+
+#login_area{
+    display: -webkit-box
+}
+#login_area .banner{
+    background: transparent top center url(../images/login_icon_intro.svg) no-repeat;
+    background-size: 100%;
+    min-height: 180px;
+}
+
+#login_area .content, #login_area .banner{
+    width: 50%;
+}
+#login_area .content{
+    text-align: left;
+}
+#login_area .content .welcome{
+    font-size: 2em;
+    font-weight: bold;
+    background: bottom left url(../images/line.svg) no-repeat;
+    background-size: 100px;
+    height: 60px;
+}
+#login_area .content .intro, #login_area .content .login{
+    margin-top: 30px
+}    
+#login_area .content .intro{
+    min-height: 180px;
+}
+
+#login_area .content .login, .tieu_de_can_login{
+    background: transparent left center url(../images/login_google.svg) no-repeat;
+    background-size: contain;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 31px;
+    font-size: medium;
+    font-weight: bold
+}
+
+#lichsu_choigame .mot_lichsu{
+    background-color: #fff;
+    float: left;
+    border-right: 10px solid #f3f3f3;
+    border-bottom: 10px solid #f3f3f3;
+    padding: 10px;
+}
+
+#lichsu_choigame .mot_lichsu .logo{
+    padding: 0px;
+}
+#lichsu_choigame .mot_lichsu .logo .ten_game{
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+    font-size: smaller;
+}
+
+#lichsu_choigame .row{margin: 0px}
+
+#lichsu_choigame .game_random_binary .logo{
+    background: #dbec70 50% 30% url(../images/game_random_binary.svg) no-repeat;
+    background-size: 60px;
+}
+#lichsu_choigame .game_random_number .logo{
+    background: #a2ebeb 50% 30% url(../images/game_random_number.svg) no-repeat;
+    background-size: 50px;
+}
+#lichsu_choigame .game_speed_number .logo{
+    background: #a3c2d8 50% 30% url(../images/game_speed_number.svg) no-repeat;
+    background-size: 50px;
+}
+#lichsu_choigame .game_random_word .logo{
+    background: #abe4a9 50% 30% url(../images/game_random_word.svg) no-repeat;
+    background-size: 60px;
+}
+#lichsu_choigame .game_random_card .logo{
+    background: #8eee91 50% 30% url(../images/game_random_card.svg) no-repeat;
+    background-size: 60px;
+}
+#lichsu_choigame .game_speed_card .logo{
+    background: #c49fff 50% 30% url(../images/game_speed_card.svg) no-repeat;
+    background-size: 60px;
+}
+#lichsu_choigame .game_name_face .logo{
+    background: #feafaf 50% 30% url(../images/game_name_face.svg) no-repeat;
+    background-size: 60px;
+}
+#lichsu_choigame .game_spoken_number .logo{
+    background: #dbbf93 50% 30% url(../images/game_spoken_number.svg) no-repeat;
+    background-size: 40px;
+}
+#lichsu_choigame .game_historic_date .logo{
+    background: #f9c991 50% 30% url(../images/game_historic_date.svg) no-repeat;
+    background-size: 50px;
+}
+#lichsu_choigame .game_abstract_image .logo{
+    background: #f4b1f1 50% 30% url(../images/game_abstract_image.svg) no-repeat;
+    background-size: 60px;
+}
+
+#lichsu_choigame .content{
+    text-align: left;
+}
+#lichsu_choigame .content .diem_thi{
+    
+}
+#lichsu_choigame .content .diem_thi .tieu_de, #profile_area .content .tieu_de{
+    background: bottom left url(../images/line.svg) no-repeat;
+    background-size: 30px;
+    min-height: 30px;
+    font-weight: bold;
+    padding: 0px;
+}
+#lichsu_choigame .content .diem_thi .diem{
+    text-align: right;
+}
+
+#lichsu_choigame .content .diem_thi .ngay_thang{
+    
+}
+#lichsu_choigame .content .diem_thi .ten_game{
+    
+}
+
+#profile_area .content{
+    min-height: 200px;
+    height: 70%;
+}
+
+#profile_area .content .tieu_de{
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.tieu_de_luat_choi {
+    text-align: left;
+    font-weight: bold;
+    background: bottom left url(../images/line.svg) no-repeat;
+    background-size: 40px;
+    height: 30px;
+}
+.thu_hang{
+    text-align: right;
+    font-weight: bold;
+    float: right;
+}
+#ranking_area .toolbar.top select, #ranking_area .toolbar.top input, #ranking_area .toolbar.top button{
+    margin-left: 5px;
+    margin-right: 10px;
+    padding: 0 20px 0 10px;
+    background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
+    background-size: 10px 10px;
+    border-radius: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.toolbar.bottom{
+    display: flex;
+}
+
+#ranking_area .row, #profile_area .row{
+    margin: 0px
+}
+#ranking_area .content{
+    margin-top: 20px;
+    height: 70%;
+    overflow-y: auto;
+}
+
+#profile_area .banner{
+    background: center top url(../images/login.svg) no-repeat;
+    background-size: 100px
+}
+
+#profile_area input, #profile_area select {
+    width: 100%;
+    margin-top: 6px;
+    padding: 4px 10px;
+    background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
+    background-size: 12px 12px;
+    border-radius: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+#profile_area input {
+    background: #fff;
+}
+#profile_area .content .row div{
+    padding-left: 0px;
+}
+#profile_area div.submit{
+    height: 45px;
+    width: 100%;
+}
+
+#profile_area #avatar{
+    margin-top: 150px;
+}
+
+#ranking_area .chon_cap_do{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+#ranking_area .thong_tin_loc{
+    padding-top: 20px;
+}
+
+#ranking_area .icon {
+    background: transparent center right url(../images/ranking_icon.svg) no-repeat;
+    background-size: 25px;
+    min-width: 50px;
+    text-align: right;
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+#ranking_area .ranking_icon_1{
+    background: transparent center center url(../images/ranking_icon_1.svg) no-repeat;
+    background-size: 15px;
+    color: transparent;
+}
+#ranking_area .ranking_icon_2{
+    background: transparent center center url(../images/ranking_icon_2.svg) no-repeat;
+    background-size: 15px;
+    color: transparent;
+}
+#ranking_area .ranking_icon_3{
+    background: transparent center center url(../images/ranking_icon_3.svg) no-repeat;
+    background-size: 15px;
+    color: transparent;
+}
+
+.menu-item.ranking_icon {
+    background: transparent center left url(../images/ranking_icon.svg) no-repeat;
+    background-size: 25px;
+}
+.menu-item.record_icon, .menu-item.history_icon  {
+    background: transparent center left url(../images/record_icon.svg) no-repeat;
+    background-size: 25px;
+}
+.dropdown-item.active, .dropdown-item:active {
+    background: #fff;
+}
+.chi_tiet span{
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 0px 10px;
+    background: #F8F8F8;
+}
+.chi_tiet span:hover{
+    background: #007bff;
+    color: #fff;
+}
+.valign-midle{
+    position: absolute;
+    top: 50%;
+}

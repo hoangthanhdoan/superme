@@ -1,0 +1,159 @@
+<!-- BEGIN: main -->
+<html>
+<head>
+{FILE "init.html"}
+<title>{header.title}</title>
+
+<script>
+$(document).ready(function(){
+    $(".language_code").change(function(){
+        location.href = "./?language_code=" + $(this).val();
+    })
+
+})
+</script>
+</head>
+<body>
+<div id="header">
+    <a href="./"><div id="logo">Logo</div></a>
+    <div id="menu">
+        <div class="menu-item">
+            <select class="language_code">
+                <option value="vi">--{language.ngon_ngu}--</option>
+                <option value="vi">{language.vi}</option>
+                <option value="en">{language.en}</option>
+            </select>
+        </div>
+        <!-- BEGIN: row -->
+        <!-- BEGIN: nrow -->
+        <div class="menu-item {row.active} change_location" url="{row.link}"><a href="#">{row.class} {row.title}</a></div>
+        <!-- END: nrow -->
+        <!-- BEGIN: prow -->
+        <div class="menu-item {row.active} change_location" url="{row.link}"><a href="#">{row.class} {row.title}</a></div>
+        <!-- END: prow -->
+        <!-- END: row -->
+        <div class="menu-item {profile_active} action login" style="display:none"><a href="#"><i class="fas fa-user"></i> {language.dang_nhap}</a></div>
+        <div class="menu-item {profile_active} logout" >
+            <div class="dropdown">
+                <div class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><a href="#"><span class="ho_ten_dang_nhap"></span></div>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item change_location" type="button" url="profile.php"><a href="#">{language.tai_khoan}</a></button>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item action logout" type="button"><a href="#">{language.dang_xuat}</a></button>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="wrapper" class="container-fluid">
+
+<!-- END: main -->
+
+<!-- BEGIN: main_2 -->
+<html>
+<head>
+{FILE "init.html"}
+<title>{header.title}</title>
+</head>
+<body><a name="top"></a>
+<nav role="navigation" class="navbar navbar-default">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <ul style="margin-left: 20px; max-width: 50%" class="nav navbar-nav navbar-left">
+            <li>
+                <div class="btn-group account fl">
+                <button type="button" class="btn btn-default form-control dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span class="glyphicon glyphicon-user"></span> {user_info.user}
+                </button> 
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="profile.php">Tài khoản</a></li>
+                        <li><a href="changepass.php">Đổi mật khẩu</a></li>
+                        <li class="divider"></li>
+                        <li><a href="?func=logout">Logout</a></li>
+                    </ul>
+
+                </div>
+                <div style="font-size: 16pt;" class="mobile_only fl"> 
+                    <div class="fl pointer panel-left" style="padding-left: 20px; padding-right: 20px; "><span class="glyphicon glyphicon-chevron-left"></span></div> 
+                    <div class="fl pointer panel-right" style="padding-left: 20px; padding-right: 20px; "><span class="glyphicon glyphicon-chevron-right"></span></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- Collection of nav links and other content for toggling -->
+    <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <!-- BEGIN: row -->
+            <!-- BEGIN: nrow -->
+            <li role="presentation" class="{row.active} {row.dropdown}">
+            <a href="{row.link}"><span class="{row.class}"></span> {row.title} <span class="badge alert-number">{row.soluong_canhbao}</span></a>
+            </li>
+            <!-- END: nrow -->
+            <!-- BEGIN: prow -->
+            <li role="presentation" class="{row.active} {row.dropdown} dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><span class="{row.class}"></span> {row.title}<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <!-- BEGIN: srow -->
+                <li class="{srow.active} {srow.class}"><a href="{srow.link}">{srow.title}</a></li>
+                <!-- END: srow -->
+            </ul>
+            </li>
+            <!-- END: prow -->
+            <!-- END: row -->
+        </ul>
+        
+        <ul class="nav navbar-nav navbar-right">
+            <span class="glyphicon glyphicon-tower"></span>
+            <!-- BEGIN: chinhanh -->{chinhanh.ten}<!-- END: chinhanh -->
+            <!-- BEGIN: quanly -->
+            <select id="chinhanh_selector" style="background: transparent; border: 0px;">
+                {chinhanh_listview}
+            </select>
+            <!-- END: quanly -->
+        </ul>
+    </div>
+</nav>
+<script>
+$(document).ready(function(){
+   $("#chinhanh_selector").change(function(){
+        window.location = "./?interface_chinhanhid=" + $(this).val() ;
+   });
+   /*
+   var bixoa = false;
+   function menucollapse(){
+        winwidth = $(document).width();
+        myheight = $("#navbarCollapse").height();
+        if (60 <= myheight && winwidth > 700 ) {
+            if (!bixoa){
+                $("#navbarCollapse").find("li[role=presentation]").find("a:first").each(function(){
+                    var text = $(this).text();
+                    icon = $(this).find("span").clone();
+                    $(this).html( icon);
+                    $(this).attr( "title", text );
+                    bixoa = true;
+                })
+            }
+        } else if (bixoa) {
+            $("#navbarCollapse").find("li[role=presentation]").find("a:first").each(function(){
+                var text = $(this).attr("title");
+                icon = $(this).find("span").clone();
+                $(this).append( text );
+                bixoa = false;
+            })
+        }
+   }
+   
+   $( window ).resize(function() {
+        menucollapse();
+   });
+   menucollapse();
+   */
+});
+</script>
+<!-- END: main_2 -->

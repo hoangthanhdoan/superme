@@ -1,0 +1,105 @@
+<!-- BEGIN: main -->
+<div id="home">
+<div id="select_game" class="main_screen">
+    <div id="content">
+        <div class="logo"></div>
+        <form id="form" action="game.php" onsubmit="return false;">
+            <div class="chon_cap_do">
+                <div class="tieu_de">{language.chon_cap_do}</div>
+                <select name="game_mode" class="cac_cap_do">
+                    <option value="1">{language.thi_quoc_gia}</option>
+                    <option value="2">{language.thi_quoc_te}</option>
+                    <option value="3">{language.thi_the_gioi}</option>
+                    <option value="0">{language.luyen_tap_tu_do}</option>
+                </select>
+            </div>
+            <div class="chon_man">
+                <div class="tieu_de">{language.chon_man}</div>
+                <select name="game_key" class="cac_man_choi">
+                    <option value="game_name_face">{language.ten_va_khuon_mat}</option>
+                    <option value="game_random_binary">{language.so_nhi_phan}</option>
+                    <option value="game_random_number">{language.so_ngau_nhien}</option>
+                    <option value="game_abstract_image">{language.hinh_anh_truu_tuong}</option>
+                    <option value="game_speed_number">{language.nho_so_nhanh}</option>
+                    <option value="game_historic_date">{language.nam_lich_su}</option>
+                    <option value="game_random_word">{language.tu_ngau_nhien}</option>
+                    <option value="game_spoken_number">{language.nghe_nho_so}</option>
+                    <option value="game_random_card">{language.bai_ngau_nhien}</option>
+                    <option value="game_speed_card">{language.nho_bai_nhanh}</option>
+                </select>
+            </div>
+            <div class="submit"><button type="submit" class="action submit">{language.ok}</button></div>
+        </form>
+    </div>
+</div>
+<div id="luat_choi">
+
+</div>
+</div>
+<script>
+$(document).ready(function(){
+    function xem_luat_choi(){
+        language_code = "{language_code}";
+        language_luat_choi = "{language.luat_choi}";
+        if (language_code == "vi") language_code = "vn";
+        man_choi = $(".cac_man_choi").val();
+        cap_do = $(".cac_cap_do").val();
+        switch(cap_do){
+            case "0":
+                cap_do = "free";
+                $("#luat_choi").html();
+                return;
+                break;
+            case "1":
+                cap_do = "national";
+                break;
+            case "2":
+                cap_do = "international";
+                break;
+            case "3":
+                cap_do = "world";
+                break;
+        }
+
+        if (man_choi == "game_name_face") man_choi = "game_name_and_face";
+        if (man_choi == "game_random_binary") man_choi = "game_binary_number";
+        if (man_choi == "game_historic_date") man_choi = "game_historic_future_date";
+        
+        man_choi = man_choi.substr(5);
+        url = "http://api.memorybooster.top/rules/" + language_code + "/" + cap_do + "_" + man_choi + ".html";
+        $("#luat_choi").html("<div class='tieu_de_luat_choi'>"+language_luat_choi+"</div><iframe style='border:0px;' height='100%' width='100%' src='"+url+"'></iframe>");
+    }
+    $(".cac_man_choi").change(function(){
+        xem_luat_choi();
+    })
+    $(".cac_cap_do").change(function(){
+        xem_luat_choi();
+    })
+    xem_luat_choi();
+    $(".action.submit").click(function(){
+        var urlString = "game.php";
+        var params_obj = $("#form").serializeFormJSON();
+        params_obj.embed = true;
+        $.ajax({
+    		type        : "GET", // define the type of HTTP verb we want to use (POST for our form)
+    		url         : urlString, // the url where we want to POST
+    		data        : params_obj, // our data object
+    		dataType    : 'html', // what type of data do we expect back from the server
+    		encode      : true
+    	})
+    	.success(function(result) {
+    	    $("#wrapper").html(result);
+            try{delete params_obj.embed;}catch(e){}
+            var params_st = url = Object.keys(params_obj).map(function(k) {
+                return encodeURIComponent(k) + '=' + encodeURIComponent(params_obj[k])
+            }).join('&');
+            urlString = urlString + "?" + params_st;
+            window.history.replaceState("state", "url", urlString);
+        })
+    	.error(function(result) {
+            console.log("Loi roi cung");
+    	});
+    })
+})
+</script>
+<!-- END: main -->

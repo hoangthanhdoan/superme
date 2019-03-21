@@ -1,0 +1,70 @@
+<!-- BEGIN: main -->
+<div id="profile_area">
+  <form method="post" enctype="multipart/form-data" >
+  </form>
+  <form method="post" enctype="multipart/form-data" action="http://api.memorybooster.top/profile.php?func=send" >
+  <div class="row">
+        <div class='banner col-4'>
+            <input type="file" name="avatar_path" id="avatar" />
+        </div>
+        <div class='content col-sm'>
+            <div class="tieu_de">{language.cap_nhat_thong_tin}</div>
+            <div class="row">
+                <div class="col-7">
+                    <input type="email" name="email" id="email" placeholder="{language.email}" required="true" readonly="true" />
+                    <input type="text" name="fullname" id="ho_ten" placeholder="{language.ho_ten}" required="true" />
+                    <input type="hidden" name="phone_id" id="phone_id" placeholder="{language.so_dien_thoai}" />
+                </div>
+                <div class="col-sm">
+                    <select name="location_at" id="noi_song">
+                        {FILE "_noi_song.html"}
+                    </select>
+                    <select name="year_of_birth" id="nam_sinh">
+                        <!-- BEGIN: nam_sinh -->
+                        <option value="{nam_sinh}">{nam_sinh}</option>
+                        <!-- END: nam_sinh -->
+                    </select>
+                    <select name="gender" id="gioi_tinh">
+                        <option value="255">- {language.gioi_tinh} -</option>
+                        <option value="1">{language.gioi_tinh_nam}</option>
+                        <option value="0">{language.gioi_tinh_nu}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="submit">
+        <input type="hidden" name="redirect" value="http://webapp.memorybooster.top/profile.php" />
+        <input type="hidden" name="submit" value="submit" />
+        <button type="submit" class="action_submit">{language.submit}</button>
+    </div>
+
+  </form>
+</div>
+
+<script src="tpl/js/profile.js?v={app_version}" ></script>
+<!-- END: main -->
+        <div class='content col-sm'>
+            <div class="tieu_de">{language.cap_nhat_thong_tin}</div>
+            <div class="row">
+                <div class="col-7">
+                    <input type="email" name="email" id="email" placeholder="{language.email}" required="true" />
+                    <input type="text" name="ho_ten" id="ho_ten" placeholder="{language.ho_ten}" required="true" />
+                </div>
+                <div class="col-sm">
+                    <select name="noi_song" id="noi_song">
+                        {FILE "_noi_song.html"}
+                    </select>
+                    <select name="nam_sinh" id="nam_sinh">
+                        <!-- BEGIN: nam_sinh -->
+                        <option value="{nam_sinh}">{nam_sinh}</option>
+                        <!-- END: nam_sinh -->
+                    </select>
+                    <select name="gioi_tinh" id="gioi_tinh">
+                        <option value="255">- {language.gioi_tinh} -</option>
+                        <option value="1">{language.gioi_tinh_nam}</option>
+                        <option value="0">{language.gioi_tinh_nu}</option>
+                    </select>
+                </div>
+            </div>
+        </div>

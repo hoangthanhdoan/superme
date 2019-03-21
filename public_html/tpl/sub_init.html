@@ -1,0 +1,226 @@
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyA7exooHwke24wmO7-cr9kTSOJ0jcQzuGg",
+        authDomain: "memory-championships.firebaseapp.com",
+        databaseURL: "https://memory-championships.firebaseio.com",
+        projectId: "memory-championships",
+        storageBucket: "memory-championships.appspot.com",
+        messagingSenderId: "610237529994"
+    };
+    firebase.initializeApp(config);
+    var provider = new firebase.auth.GoogleAuthProvider();
+    var user_logined = null;
+    var _interval_playing_audio = 0;
+
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+
+<link href="tpl/css/style.css?v={app_version}" rel="stylesheet" type="text/css"/>
+<link href="tpl/css/game.css?v={app_version}" rel="stylesheet" type="text/css"/>
+<link href="tpl/css/{game_key}.css?v={app_version}" rel="stylesheet" type="text/css"/>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="tpl/js/language.{language_code}.js?v={app_version}" ></script>
+<script src="tpl/js/user.js" ></script>
+
+<script src="http://api.memorybooster.top/js/data.js?v={app_version}" ></script>
+<script src="tpl/js/sub_server.js?v={app_version}" ></script>
+<script src="tpl/js/local_server.class.js?v={app_version}" ></script>
+
+<script src="tpl/js/audio.class.js?v={app_version}" ></script>
+<script src="tpl/js/game.class.js?v={app_version}" ></script>
+
+<script src="tpl/js/game_numbers.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_random_number.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_speed_number.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_random_binary.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_spoken_number.class.js?v={app_version}" ></script>
+
+<script src="tpl/js/game_images.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_name_face.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_abstract_image.class.js?v={app_version}" ></script>
+
+<script src="tpl/js/game_historic_date.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_random_word.class.js?v={app_version}" ></script>
+
+<script src="tpl/js/game_random_card.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_speed_card.class.js?v={app_version}" ></script>
+
+
+<script>
+$(document).ready(function(){    
+    $(window).on('resize', function(){
+        setTimeout(function(){doResize();}, 50)
+    });
+    function doResize(){
+        height = window.innerHeight;
+        width = window.innerWidth;
+        //if (width <= 1000) 
+        {
+            scale = width*100/1000;
+            
+            header_height = $("#header").height() + 16;
+            wrapper_h = height - header_height;
+            $("#wrapper").css("height", (wrapper_h*100/scale) - 100 + "px");
+            console.log("header height = " + header_height);
+            console.log("height = " + height);
+            console.log("wrapper_h = " + (wrapper_h - 100) );
+
+            $("body").css("zoom", scale + "%");
+        }
+    }
+    doResize();
+    
+    function action_logout(user){
+        user_logined = user;
+        //console.log(user_logined);
+        $(".ho_ten_dang_nhap").html(user.displayName);
+        
+        $(".action.login").hide();
+        $(".logout").show();
+            
+        $(".action.logout").unbind("click");
+        $(".action.logout").click(function(){
+            firebase.auth().signOut().then(function() {
+                // Sign-out successful.
+                location.reload();
+            }).catch(function(error) {
+                // An error happened.
+            });
+        })
+        
+        REQUEST_GET_PROFILE_REQUEST({ content: {email: user.email} }, function(rs){
+            var objs = JSON.parse(rs);
+            var data = objs.content.array;
+            
+            if (data.length == 0) {
+                $.ajax({url: "profile.php?embed=true", success: function(result){
+            		$("#wrapper").html(result);
+                    $("#wrapper").show();
+                    
+            	}, error: function(result){
+            	    $("#wrapper").html("Error");
+                    $("#wrapper").show();
+            	} });
+            } else {
+                var background = "center left url("+data[0].avatar+") no-repeat";
+                var background_size = "25px";
+                
+                $(".action.login").css("background", background);
+                $(".action.login").css("background-size", background_size);
+                
+                $(".menu-item.logout").css("background", background);
+                $(".menu-item.logout").css("background-size", background_size);
+            }
+        } )
+        
+        try{logined(user);}catch(e){}
+    }
+    function action_login(){
+        $(".action.login").show();
+        $(".logout").hide();
+
+        $(".action.login").unbind("click");
+        $(".action.login").click(function(){
+            firebase.auth().signInWithRedirect(provider);
+            firebase.auth().getRedirectResult(provider).then(function(result) {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                var token = result.credential.accessToken;
+                // The signed-in user info.
+                var user = result.user;
+                // ...
+                console.log("Thanh cong: ");
+                console.log(user);
+            }).catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // The email of the user's account used.
+                var email = error.email;
+                // The firebase.auth.AuthCredential type that was used.
+                var credential = error.credential;
+                // ...
+                console.log(errorMessage);
+            });
+        })
+
+    }
+    
+    /**/
+    firebase.auth().onAuthStateChanged(function(user) 
+    {
+        if (user) {
+            action_logout(user);
+            
+        } else {
+            $("#wrapper").html("<div class='tieu_de_can_login action login'>Need to login!</div>");
+            action_login();
+            $.ajax({url: "login.php?embed=true", success: function(result){
+        		$("#wrapper").html(result);
+                $("#wrapper").show();
+                action_login();
+        		
+        	}, error: function(result){
+                $("#wrapper").show();
+        	} });
+            
+        }
+    });
+    /**/
+    
+    $(".change_location").click(function(){
+	    clearInterval(_interval_playing_audio);
+        if (!user_logined) {
+            $.ajax({
+        		url         : window.location.origin + "/login.php?embed=true", // the url where we want to POST
+        		dataType    : 'html', // what type of data do we expect back from the server
+        		encode      : true
+        	})
+        	.success(function(result) {
+                $("#wrapper").html(result);
+            })
+        } 
+        var change_location_this = $(this);
+        var location_dst = window.location.origin + "/" + $(this).attr("url");
+        $.ajax({
+    		type        : "GET", // define the type of HTTP verb we want to use (POST for our form)
+    		url         : location_dst + "?embed=true", // the url where we want to POST
+    		dataType    : 'html', // what type of data do we expect back from the server
+    		encode      : true
+    	})
+    	.success(function(result) {
+    	    if (!user_logined) {
+                $.ajax({
+            		url         : window.location.origin + "/login.php?embed=true", // the url where we want to POST
+            		dataType    : 'html', // what type of data do we expect back from the server
+            		encode      : true
+            	})
+            	.success(function(result) {
+            	    $("#wrapper").html(result);
+                })
+            } else {
+        	    $("#wrapper").html(result);
+            }
+            $(".menu-item.active").removeClass("active");
+    	    change_location_this.addClass("active");
+            window.history.replaceState("state", "url", location_dst);
+        })
+        .error(function(result) {
+            window.alert("Please check your Internet connection!");
+    	});
+    })
+})
+</script>

@@ -1,0 +1,118 @@
+<!-- BEGIN: form_json -->
+[
+	{"name":"form[ma]","value":"{form.ma}"},
+	{"name":"form[ten]","value":"{form.ten}"},
+	{"name":"form[vi]","value":"{form.vi}"},
+	{"name":"form[en]","value":"{form.en}"},
+	
+    {"name":"id","value":"{form.id}"},
+	{"name":"view_tpl","value":"form_json"},
+	{"name":"submit","value":"submit"},
+	<!-- BEGIN: add -->
+	{"name":"func","value":"add"},
+	{"name":"submit_text","value":"{language.luu_vao}"}
+	<!-- END: add -->
+    <!-- BEGIN: edit -->
+	{"name":"func","value":"edit"},
+	{"name":"submit_text","value":"{language.cap_nhat}"}
+    <!-- END: edit -->
+]
+<!-- END: form_json -->
+<!-- BEGIN: arow -->
+<tr rowid="{row.id}" class="{newchange}">
+	<td auto="number">{row.stt}</td>
+	<td>{row.ma}</td>
+	<td>{row.vi}</td>
+	<td>{row.en}</td>
+	<td nowrap>
+		<a title="{language.chinh_sua}" class='btn btn-warning btn-sm form_edit_json {row.class_khongthesua}' role='button'><span class='glyphicon glyphicon-pencil'></span></a>
+		<a title="{language.xoa_du_lieu}" class='btn btn-danger btn-sm form_delete {row.class_khongthexoa}' role='button'><span class='glyphicon glyphicon-trash'></span></a>
+	</td>
+</tr>
+<!-- END: arow -->
+<!-- BEGIN: error -->
+<div class="alert alert-danger alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>Lỗi!</strong> {error_message}.
+</div>
+<!-- END: error -->
+<!-- BEGIN: main -->
+<script src="tpl/js/form.js?v={app_version}" ></script>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h4>
+	<a class="btn btn-primary btn-sm refresh" title="{language.tai_lai_trang}" role="button"><span class="glyphicon glyphicon-refresh"></span> </a>
+	<a class="btn btn-info btn-sm form_add_json" title="{language.them_moi}" role="button"><span class="glyphicon glyphicon-plus"></span> </a>
+	{header.subtitle}</h4>
+  </div>
+  <div class="panel-body">
+  	<div id="form_edit" style="display: none; " ></div>
+	<div id="form" style="display: none;" >
+		<div class="fr pointer hide_form" data="form"><span class="glyphicon glyphicon-remove"></span> {language.dong_lai}</div><div class="clearfix"></div>
+        <form id="form_data" class="horizontal-form myform label_thin label_center style" action="#" onsubmit="return onSubmit()">
+			<div class="form-group"> 
+                <label class="col-sm-1 control-label right">Mã</label>
+				<div class="col-sm-4">
+					<input class="form-control focus" autocomplete="off" name="form[ma]" value="{form.ma}" placeholder="Mã" required/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label right">{language.vi}</label>
+				<div class="col-sm-5">
+					<input class="form-control" autocomplete="off" name="form[vi]" value="{form.vi}" title="{language.vi}" placeholder="{language.vi}" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-1 control-label right">{language.en}</label>
+				<div class="col-sm-5">
+					<input class="form-control" autocomplete="off" name="form[en]" value="{form.en}" title="{language.en}" placeholder="{language.en}" />
+				</div>
+			</div>
+            
+            <div class="text-center">
+			<input type="hidden" name="id" value="{form.id}" /> 
+			<input type="hidden" name="view_tpl" value="form_json" /> 
+			<!-- BEGIN: add -->
+			<input type="hidden" name="func" value="add" />
+			<input type="hidden" name="submit" value="submit" />
+			<input type="submit" name="submit_text" class="btn btn-primary btn-sm form_submit_json" value="{language.luu_vao}" />
+			<!-- END: add -->
+			<!-- BEGIN: edit -->
+			<input type="hidden" name="func" value="edit" />
+			<input type="hidden" name="submit" value="submit" />
+			<input type="submit" name="submit_text" class="btn btn-primary btn-sm form_submit_json" value="{language.cap_nhat}" />
+			<!-- END: edit -->
+			</div>
+		</form>
+	</div>
+	<div class="alert alert-danger alert-dismissable" style="display: none;" id="notification">
+	  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	  <strong>Lỗi: </strong> <span>{error_message}.</span>
+	</div>
+ <div class="overflow h90">
+    <table class="table table-bordered table-hover tableshowdata">
+    <thead>
+        <tr bgcolor="#eee">
+            <th>{language.stt}</th>
+            <th>{language.ma}</th>
+            <th>{language.vi}</th>
+            <th>{language.en}</th>
+            <th>{language.chuc_nang}</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    </table>
+  </div>
+ </div>
+</div>
+<script type="text/javascript" src="tpl/js/tablemng.js?v={app_version}"></script>
+<script>
+function onSubmit(){
+	return false;
+}
+$(document).ready(function (){
+})
+</script>
+<!-- END: main -->

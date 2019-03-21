@@ -1,0 +1,113 @@
+<!-- BEGIN: main -->
+<html>
+<head>
+<title>{header.title}</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<script src="tpl/js/language.{language_code}.js?v={app_version}" ></script>
+<script src="tpl/js/user.js" ></script>
+
+<link href="tpl/css/style.css?v={app_version}" rel="stylesheet" type="text/css"/>
+<link href="tpl/css/game.css?v={app_version}" rel="stylesheet" type="text/css"/>
+
+<script src="tpl/js/sub_server.js?v={app_version}" ></script>
+<script src="http://api.memorybooster.top/js/data.js?v={app_version}" ></script>
+
+<script src="tpl/js/local_server.class.js?v={app_version}" ></script>
+
+<script src="tpl/js/audio.class.js?v={app_version}" ></script>
+<script src="tpl/js/game.class.js?v={app_version}" ></script>
+
+<script src="tpl/js/game_numbers.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_random_number.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_speed_number.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_random_binary.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_spoken_number.class.js?v={app_version}" ></script>
+
+<script src="tpl/js/game_images.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_name_face.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_abstract_image.class.js?v={app_version}" ></script>
+
+<script src="tpl/js/game_historic_date.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_random_word.class.js?v={app_version}" ></script>
+
+<script src="tpl/js/game_random_card.class.js?v={app_version}" ></script>
+<script src="tpl/js/game_speed_card.class.js?v={app_version}" ></script>
+
+<style>
+    .mothang .traloi input{
+        font-size: 5em;
+    }
+</style>
+
+<script>
+$(document).ready(function(){
+    $(window).on('resize', function(){
+        setTimeout(function(){doResize();}, 50)
+    });
+    function doResize(){
+        width = window.innerWidth;
+        //if (width <= 1000) 
+        {
+            scale = width*100/1000;
+            $("body").css("zoom", scale + "%");
+        }
+    }
+    doResize();
+    $(".language_code").change(function(){
+        location.href = "./?language_code=" + $(this).val();
+    })
+
+    
+})
+</script>
+</head>
+<body>
+<div id="wrapper" class="container-fluid">
+<div id="game_area" style="margin-top: 30px;">{game_content}</div>
+</div>
+<script>
+    game_mode = parseInt("{game_mode}");
+    time_info_before_play = parseInt("{time_info_before_play}");
+    time_exam_remember = parseInt("{time_exam_remember}");
+    time_question_answer = parseInt("{time_question_answer}");
+    quantity = parseInt("{quantity}");
+</script>
+<script src="tpl/js/ex.js?v={app_version}" ></script>
+<!-- END: main -->
+
+<!-- BEGIN: ex -->
+<div class="_number_game game_spoken_number lines_5">
+<div id="game_question" class="game_embed">
+    <div class="toolbar top">
+        <span class="display clock">-:-:-</span>
+        <div class="action ketthuc">Submit</div>
+        <select class="action chia_nhom">
+            <optgroup label="{language.che_do_hien_thi}">
+                <option value="0">0 {language.cot}</option>
+                <option value="1">1 {language.cot}</option>
+                <option value="2">2 {language.cot}</option>
+                <option value="3">3 {language.cot}</option>
+                <option value="4">4 {language.cot}</option>
+                <option value="5">5 {language.cot}</option>
+                <option value="6">6 {language.cot}</option>
+                <option value="7">7 {language.cot}</option>
+                <option value="8">8 {language.cot}</option>
+                <option value="9">9 {language.cot}</option>
+            </optgroup>
+        </select>
+    </div>
+    <div id="content"></div>
+    <div class="toolbar bottom"></div>
+</div>
+</div>
+<!-- END: ex -->

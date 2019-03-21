@@ -1,0 +1,48 @@
+.lines_40 .cot{
+    display:inline-table; 
+    width: 2.4%;
+    text-align:center;
+}
+.lines_40 .cot.sohang {
+    max-width: 3%;
+    text-align:right;
+}
+.lines_40 .cot input{
+    width: 100%;
+    border: 0px;
+    text-align:center;
+    min-width:20px;
+    padding: 0px;
+    border-radius: 0px;
+    
+}
+.cot input::-webkit-outer-spin-button,
+.cot input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+.cot input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+.mothang:hover{background-color: #eee;}
+.mothang{border-bottom: 1px solid #efefef}
+.col_border{
+    border-right:1px solid; 
+}
+.traloi input{background: transparent}
+.traloi input.dung{background-color:#0f0 !important}
+.traloi input.sai{background-color:#f0f !important}
+.lines_40 .cot input:hover, .lines_40 .cot input:focus{background-color:#ff0 !important}
+.traloi input {cursor:pointer; border-bottom: 1px solid #efefef !important}
+
+#game, #game_answer{
+    margin:auto; 
+    width:1200px;
+    min-width:1000px;
+    max-width:100%;
+    overflow: auto;
+    height: 90%;
+}
+

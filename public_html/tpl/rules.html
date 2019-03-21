@@ -1,0 +1,66 @@
+<!-- BEGIN: main -->
+<div id="game_area">{game_content}</div>
+
+<script>
+    game_mode = parseInt("{game_mode}");
+    time_info_before_play = parseInt("{time_info_before_play}");
+    time_exam_remember = parseInt("{time_exam_remember}");
+    time_question_answer = parseInt("{time_question_answer}");
+    quantity = parseInt("{quantity}");
+</script>
+<script src="tpl/js/{game_key}.js?v={app_version}" ></script>
+<!-- END: main -->
+
+<!-- BEGIN: game_random_number -->
+<div class="_number_game game_random_number lines_40">
+{FILE "_game_number_type.html"}
+</div>
+<!-- END: game_random_number -->
+<!-- BEGIN: game_speed_number -->
+<div class="_number_game game_random_number lines_40">
+{FILE "_game_number_type.html"}
+</div>
+<!-- END: game_speed_number -->
+<!-- BEGIN: game_random_binary -->
+<div class="_number_game game_random_binary lines_30">
+{FILE "_game_number_type.html"}
+</div>
+<!-- END: game_random_binary -->
+<!-- BEGIN: game_spoken_number -->
+<div class="_number_game _audio_game game_spoken_number lines_40">
+{FILE "_game_number_type.html"}
+</div>
+<script>
+    var language_dang_doc_so = "{language.dang_doc_so}";
+</script>
+<!-- END: game_spoken_number -->
+<!-- BEGIN: game_name_face  -->
+<div class="_image_game _title_game game_name_face lines_5">
+{FILE "_game_number_type.html"}
+</div>
+<!-- END: game_name_face -->
+<!-- BEGIN: game_abstract_image -->
+<div class="_image_game _title_game game_abstract_image lines_5">
+{FILE "_game_number_type.html"}
+</div>
+<!-- END: game_abstract_image -->
+<!-- BEGIN: game_historic_date -->
+<div class="_word_game game_historic_date lines_1">
+{FILE "_game_number_type.html"}
+</div>
+<!-- END: game_historic_date -->
+<!-- BEGIN: game_random_word -->
+<div class="_word_game game_random_word lines_5">
+{FILE "_game_number_type.html"}
+</div>
+<!-- END: game_random_word -->
+<!-- BEGIN: game_random_card -->
+<div class="game_random_card">
+{FILE "_game_number_type.html"}
+</div>
+<!-- END: game_random_card -->
+<!-- BEGIN: game_speed_card -->
+<div class="game_speed_card">
+{FILE "_game_number_type.html"}
+</div>
+<!-- END: game_speed_card -->
