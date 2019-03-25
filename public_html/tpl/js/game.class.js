@@ -183,7 +183,7 @@ class Game_controller{
         }
         
         this.obj_info_scr.find(".action.boqua").unbind("click");
-        this.obj_info_scr.find(".action.boqua").click(function(){setTimeout(function(){boqua();},50)})
+        this.obj_info_scr.find(".action.boqua").click(function(){setTimeout(function(){boqua();},2000)})
         this.obj_info_scr.show();
         
         try {para.finished(para);} catch(e){}
@@ -479,6 +479,7 @@ class Game_controller{
                     obj_this.exam_start();
                 }
             });
+            _interval_countdown = obj_this.interval;
         }, 1000)
         
         
@@ -515,6 +516,7 @@ class Game_controller{
                         try{Play_audio._ready_go_stop();}catch(e){}
                     }
                 });
+                _interval_countdown = obj_this.interval;
             }, 2000)
             
         }, 1000);
@@ -533,6 +535,7 @@ class Game_controller{
                 obj_this.checkmark_start();
             }
         });
+        _interval_countdown = obj_this.interval;
         $('input[idval=0]').focus();
     }
     checkmark_start (){
@@ -623,12 +626,14 @@ class Game_controller{
                 obj_result.html(hour + ":" + minute + ":" + second);
                 para.from--;
                 if (para.speaking_minute && second == 1) { 
+                    //window.alert("countdown van con hoat dong");
                     setTimeout(function(){Play_audio._minute(minute);}, 1000);
                 }
             }else {
                 clearInterval(interval);
                 try {para.finished(para);} catch(e){}
             }
+            console.log("Con hooat donog ne");
         }, 1000);
         
         return interval;

@@ -19,6 +19,7 @@ $(document).ready(function(){
     }
     var game = new Game_random_word(para);
     game.start();
+    $(".action.chia_nhom").hide();
     $(".action.chia_nhom").unbind("change");
     $(".action.chia_nhom").change(function(){
         socot = $(this).val();

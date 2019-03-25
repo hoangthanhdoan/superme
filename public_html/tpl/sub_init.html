@@ -15,7 +15,9 @@
     firebase.initializeApp(config);
     var provider = new firebase.auth.GoogleAuthProvider();
     var user_logined = null;
+    var user_profile = null;
     var _interval_playing_audio = 0;
+    var _interval_countdown = 0;
 
 </script>
 
@@ -36,7 +38,7 @@
 <script src="tpl/js/language.{language_code}.js?v={app_version}" ></script>
 <script src="tpl/js/user.js" ></script>
 
-<script src="http://api.memorybooster.top/js/data.js?v={app_version}" ></script>
+<script src="http://api.memorybooster.top/js/data_1_5.js?v={app_version}" ></script>
 <script src="tpl/js/sub_server.js?v={app_version}" ></script>
 <script src="tpl/js/local_server.class.js?v={app_version}" ></script>
 
@@ -84,6 +86,48 @@ $(document).ready(function(){
     }
     doResize();
     
+    function lay_thong_tin_a_dieu_khien(user) {
+        REQUEST_GET_PROFILE_REQUEST({ content: {email: user.email} }, function(rs){
+            var objs = JSON.parse(rs);
+            var data = objs.content.array;
+            
+            if (data[0].active_type != 1 && data[0].active_type != 2) {
+                $.ajax({url: "level.php?embed=true", success: function(result){
+                    $("#wrapper").html(result);
+                    $("#wrapper").show();
+                    
+                }, error: function(result){
+                    $("#wrapper").html("Error");
+                    $("#wrapper").show();
+                } });
+            } 
+
+            if (data.length == 0) {
+                user_profile = [];
+                $.ajax({url: "profile.php?embed=true", success: function(result){
+                    $("#wrapper").html(result);
+                    $("#wrapper").show();
+                    
+                }, error: function(result){
+                    $("#wrapper").html("Error");
+                    $("#wrapper").show();
+                } });
+            } else {
+                user_profile = data[0];
+
+                var background = "center left url("+data[0].avatar+") no-repeat";
+                var background_size = "25px";
+                
+                $(".action.login").css("background", background);
+                $(".action.login").css("background-size", background_size);
+                
+                $(".menu-item.logout").css("background", background);
+                $(".menu-item.logout").css("background-size", background_size);
+            }
+        } )
+    }
+
+
     function action_logout(user){
         user_logined = user;
         //console.log(user_logined);
@@ -102,30 +146,7 @@ $(document).ready(function(){
             });
         })
         
-        REQUEST_GET_PROFILE_REQUEST({ content: {email: user.email} }, function(rs){
-            var objs = JSON.parse(rs);
-            var data = objs.content.array;
-            
-            if (data.length == 0) {
-                $.ajax({url: "profile.php?embed=true", success: function(result){
-            		$("#wrapper").html(result);
-                    $("#wrapper").show();
-                    
-            	}, error: function(result){
-            	    $("#wrapper").html("Error");
-                    $("#wrapper").show();
-            	} });
-            } else {
-                var background = "center left url("+data[0].avatar+") no-repeat";
-                var background_size = "25px";
-                
-                $(".action.login").css("background", background);
-                $(".action.login").css("background-size", background_size);
-                
-                $(".menu-item.logout").css("background", background);
-                $(".menu-item.logout").css("background-size", background_size);
-            }
-        } )
+        lay_thong_tin_a_dieu_khien(user);
         
         try{logined(user);}catch(e){}
     }
@@ -142,8 +163,6 @@ $(document).ready(function(){
                 // The signed-in user info.
                 var user = result.user;
                 // ...
-                console.log("Thanh cong: ");
-                console.log(user);
             }).catch(function(error) {
                 // Handle Errors here.
                 var errorCode = error.code;
@@ -182,7 +201,8 @@ $(document).ready(function(){
     /**/
     
     $(".change_location").click(function(){
-	    clearInterval(_interval_playing_audio);
+        clearInterval(_interval_playing_audio);
+        clearInterval(_interval_countdown);
         if (!user_logined) {
             $.ajax({
         		url         : window.location.origin + "/login.php?embed=true", // the url where we want to POST
@@ -193,6 +213,8 @@ $(document).ready(function(){
                 $("#wrapper").html(result);
             })
         } 
+        lay_thong_tin_a_dieu_khien(user_logined);
+
         var change_location_this = $(this);
         var location_dst = window.location.origin + "/" + $(this).attr("url");
         $.ajax({

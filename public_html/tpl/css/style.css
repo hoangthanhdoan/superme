@@ -147,7 +147,7 @@ a:hover{text-decoration: unset;}
     height: auto;
 }
 
-#game_area, #home, #login_area, #lichsu_choigame, #ranking_area, #profile_area {
+#game_area, #home, #login_area, #lichsu_choigame, #ranking_area, #profile_area, #level_area {
     text-align: center;
     background: #fff;
     min-width:900px;
@@ -226,43 +226,43 @@ a:hover{text-decoration: unset;}
 
 #lichsu_choigame .row{margin: 0px}
 
-#lichsu_choigame .game_random_binary .logo{
+.game_random_binary .logo{
     background: #dbec70 50% 30% url(../images/game_random_binary.svg) no-repeat;
     background-size: 60px;
 }
-#lichsu_choigame .game_random_number .logo{
+.game_random_number .logo{
     background: #a2ebeb 50% 30% url(../images/game_random_number.svg) no-repeat;
     background-size: 50px;
 }
-#lichsu_choigame .game_speed_number .logo{
+.game_speed_number .logo{
     background: #a3c2d8 50% 30% url(../images/game_speed_number.svg) no-repeat;
     background-size: 50px;
 }
-#lichsu_choigame .game_random_word .logo{
+.game_random_word .logo{
     background: #abe4a9 50% 30% url(../images/game_random_word.svg) no-repeat;
     background-size: 60px;
 }
-#lichsu_choigame .game_random_card .logo{
+.game_random_card .logo {
     background: #8eee91 50% 30% url(../images/game_random_card.svg) no-repeat;
     background-size: 60px;
 }
-#lichsu_choigame .game_speed_card .logo{
+.game_speed_card .logo{
     background: #c49fff 50% 30% url(../images/game_speed_card.svg) no-repeat;
     background-size: 60px;
 }
-#lichsu_choigame .game_name_face .logo{
+.game_name_face .logo{
     background: #feafaf 50% 30% url(../images/game_name_face.svg) no-repeat;
     background-size: 60px;
 }
-#lichsu_choigame .game_spoken_number .logo{
+.game_spoken_number .logo{
     background: #dbbf93 50% 30% url(../images/game_spoken_number.svg) no-repeat;
     background-size: 40px;
 }
-#lichsu_choigame .game_historic_date .logo{
+.game_historic_date .logo{
     background: #f9c991 50% 30% url(../images/game_historic_date.svg) no-repeat;
     background-size: 50px;
 }
-#lichsu_choigame .game_abstract_image .logo{
+.game_abstract_image .logo{
     background: #f4b1f1 50% 30% url(../images/game_abstract_image.svg) no-repeat;
     background-size: 60px;
 }
@@ -425,3 +425,28 @@ a:hover{text-decoration: unset;}
     position: absolute;
     top: 50%;
 }
+
+#level_area .level {
+    text-align: right;
+    width: 100%;
+    padding-right: 10px;
+    font-size: x-large;
+    height: 65px;
+    font-weight: bold;
+    text-shadow: -4px 3px 5px #000;
+    color: #fff;
+}
+#level_area .logo .ten_game{
+    text-align: center;
+    width: 100%;
+    font-size: 10pt;
+    padding-bottom: 5px;
+}
+#level_area .mot_game{
+    width: 25%;
+    height: 110px;
+    border: 10px solid transparent;
+    float: left;
+}
+
+#level_area {height: 80%}

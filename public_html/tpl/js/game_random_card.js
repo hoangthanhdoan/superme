@@ -29,7 +29,6 @@ $(document).ready(function(){
             }    
         }
     }, 500)
-    
     var nhom = 0;
     var bobai = 1;
     var bottom_obj = para.obj_exam_scr.find(".toolbar.bottom");
@@ -110,5 +109,22 @@ $(document).ready(function(){
     }
     
     setTimeout(function(){hienthi(0);}, 3000);
+    
+})
+
+/** Xu ly dap an **/
+$(document).ready(function(){
+    var bobai_imgs = [];
+    for (var i = 1; i <= 12; i++) {
+        bobai_imgs[4*(i-1)] = "tpl/images/poker_" + i + "a@3x.png";
+        bobai_imgs[4*(i-1)+1] = "tpl/images/poker_" + i + "b@3x.png";
+        bobai_imgs[4*(i-1)+2] = "tpl/images/poker_" + i + "c@3x.png";
+        bobai_imgs[4*(i-1)+3] = "tpl/images/poker_" + i + "d@3x.png";
+    }
+    var mot_hang = "";
+    for (var i = 0; i <= 51; i++) {
+        mot_hang = mot_hang + "<img src="+bobai_imgs[i]+" />";
+    }
+    para.obj_question_scr.find("#content").after("<div class='mothang'>"+mot_hang+"</div>");
     
 })
