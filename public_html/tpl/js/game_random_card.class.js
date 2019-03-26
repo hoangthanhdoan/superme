@@ -86,7 +86,7 @@ class Game_random_card extends Game_images{
         for (var r = 0; r < para.row; r++){
             para.matrix_answer[r] = [];
             for (var c = 0; c < para.col; c++){
-                para.matrix_answer[r][c] = {title: "52"}
+                para.matrix_answer[r][c] = {title: ""}
             }
         }
 
@@ -135,7 +135,7 @@ class Game_random_card extends Game_images{
             } else {
                 this.obj_question_scr.find("#content #cot_"+idval+" img").attr("src", para.bobai_imgs[52]);
                 
-                para.matrix_answer[bobai][i] = {title:"0"}
+                para.matrix_answer[bobai][i] = {title:""}
             }
         }
 
@@ -286,7 +286,7 @@ class Game_random_card extends Game_images{
         var title = para.matrix[row][col].title;
         var subtitle = para.matrix[row][col].subtitle;
         var idval = col;
-        var col_html = "<div class='cot motcot' id='cot_"+idval+"' style='' value='"+idval+"' ><div class='content'><div class='image'><img src='"+src+"'/></div></div></div>";
+        var col_html = "<div class='cot motcot' id='cot_"+idval+"' style='' value='"+idval+"' ><div class='content'><div class='image'><img src='"+src+"' border=\"5\"/></div></div></div>";
         return col_html;
     }
 
