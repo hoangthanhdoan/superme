@@ -127,10 +127,6 @@ class Game_controller{
                 obj_this.para.gameScenario = resultPara;
                 obj_this.gameScenario = obj_this.para.gameCasino;
 
-                
-                console.log("obj_this.para.matrix");
-                console.log(obj_this.para.matrix);
-
                 try {para.finished(para);} catch(e){}
             }
         );
@@ -390,19 +386,22 @@ class Game_controller{
                             var obj_col = para.matrix_answer[r][c].obj;
                             
                             var value = para.matrix_question[r][c].title;
-                            obj_col.attr("title", value);
-                            obj_col.attr("placeholder", value);
-                            
-                            if (questionItemDict.correct){
-                                obj_col.removeClass("sai");
-                                obj_col.addClass("dung");
-                                
-                                console.log("["+r+","+c+"] dung");
-                            }else{
-                                obj_col.removeClass("dung");
-                                obj_col.addClass("sai");
-                                
-                                console.log("["+r+","+c+"] sai");
+
+                            if (obj_col){
+                                obj_col.attr("title", value);
+                                obj_col.attr("placeholder", value);
+
+                                if (questionItemDict.correct){
+                                    obj_col.removeClass("sai");
+                                    obj_col.addClass("dung");
+                                    
+                                    console.log("["+r+","+c+"] dung");
+                                }else{
+                                    obj_col.removeClass("dung");
+                                    obj_col.addClass("sai");
+                                    
+                                    console.log("["+r+","+c+"] sai");
+                                }
                             }
                         }
                         
@@ -633,7 +632,6 @@ class Game_controller{
                 clearInterval(interval);
                 try {para.finished(para);} catch(e){}
             }
-            console.log("Con hooat donog ne");
         }, 1000);
         
         return interval;

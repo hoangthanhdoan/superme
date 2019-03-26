@@ -77,4 +77,8 @@ thoi_gian_tao: "Created time",
 thong_bao_bo_qua_sang_tra_loi: "Are you ready to answer the questions?",
 thong_bao_bo_qua_de_ket_thuc: "Are you sure you want to finish this exam?",
 tieu_de_ung_dung: "SuperMe: Super memory",
+bo_bai: "Deck of cards",
+chen_phai: "Insert right",
+chen_trai: "Insert left",
+xoa: "Remove",
 dfsdf: 1}

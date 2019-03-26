@@ -78,4 +78,8 @@ $language["thoi_gian_tao"] = "Thời gian tạo";
 $language["thong_bao_bo_qua_sang_tra_loi"] = "Bạn đã sẵn sàng chuyển sang phần Trả lời?";
 $language["thong_bao_bo_qua_de_ket_thuc"] = "Bạn muốn kết thúc bài thi này?";
 $language["tieu_de_ung_dung"] = "SuperMe: Siêu trí nhớ";
+$language["bo_bai"] = "Bộ bài";
+$language["chen_phai"] = "Chèn phải";
+$language["chen_trai"] = "Chèn trái";
+$language["xoa"] = "Xóa";
 ?>

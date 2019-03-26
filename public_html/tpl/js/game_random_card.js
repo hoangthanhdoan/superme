@@ -19,7 +19,8 @@ $(document).ready(function(){
     }
     var game = new Game_random_card(para);
     game.start();
-    
+
+
     var cot_objs = [];
     setTimeout(function(){
         for (var i = 0; i < 100; i++){
@@ -89,22 +90,14 @@ $(document).ready(function(){
         var socot = $(".action.chia_nhom").val();
         if (nhom*socot >= 52) {nhom = Math.floor(52/socot);}
         
-        $(".mothang").hide();
-        $(".mothang_" + bobai).show();
+        para.obj_exam_scr.find(".mothang").hide();
+        para.obj_exam_scr.find(".mothang_" + bobai).show();
         
         if (socot == 0) socot = 1;
-        $(".cot").hide();
+        para.obj_exam_scr.find(".cot").hide();
         for (var i = 0; i < socot; i++){
             var cot = (bobai-1)*52+ nhom*socot + i;
             para.obj_exam_scr.find("#cot_" + cot).show();
-            /*try {
-                cot_objs[cot].show();
-            }catch{
-                cot_objs[cot] = para.obj_exam_scr.find("#cot_" + cot);
-                cot_objs[cot].show();
-            }
-            */
-            console.log("cot = " + cot);
         }
     }
     
@@ -114,8 +107,9 @@ $(document).ready(function(){
 
 /** Xu ly dap an **/
 $(document).ready(function(){
+    /*
     var bobai_imgs = [];
-    for (var i = 1; i <= 12; i++) {
+    for (var i = 1; i <= 13; i++) {
         bobai_imgs[4*(i-1)] = "tpl/images/poker_" + i + "a@3x.png";
         bobai_imgs[4*(i-1)+1] = "tpl/images/poker_" + i + "b@3x.png";
         bobai_imgs[4*(i-1)+2] = "tpl/images/poker_" + i + "c@3x.png";
@@ -123,8 +117,15 @@ $(document).ready(function(){
     }
     var mot_hang = "";
     for (var i = 0; i <= 51; i++) {
-        mot_hang = mot_hang + "<img src="+bobai_imgs[i]+" />";
+        var idval = i+1;
+        var col_html = "<div class='cot' id='cot_"+idval+"'  ><div class='content'><div class='image'><img src='"+bobai_imgs[i]+"'/></div></div></div>";
+        mot_hang = mot_hang + col_html;
     }
-    para.obj_question_scr.find("#content").after("<div class='mothang'>"+mot_hang+"</div>");
+    mot_hang = "<div class='mothang'>"+mot_hang+"</div>";
     
+    para.obj_question_scr.addClass("group_card_52");
+    para.obj_question_scr.find("#content").after("<div class='mothang'>"+mot_hang+"</div>");
+    para.obj_question_scr.find("select.action.chia_nhom").remove();
+    */
+    para.obj_question_scr.addClass("group_card_52");
 })

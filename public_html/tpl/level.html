@@ -7,39 +7,39 @@
         <div class="fullname"></div>
     </div>
     <div class="col-sm">
-        <div class="mot_game game_random_number">
-            <div class="logo"><div class="level"></div><div class="ten_game">{language.so_ngau_nhien}</div></div>
+        <div class="mot_game game_name_face">
+            <div class="logo"><div class="level"></div><div class="ten_game">{language.ten_va_khuon_mat}</div></div>
         </div>
         <div class="mot_game game_random_binary">
             <div class="logo"><div class="level"></div><div class="ten_game">{language.so_nhi_phan}</div></div>
         </div>
-        <div class="mot_game game_random_word">
-            <div class="logo"><div class="level"></div><div class="ten_game">{language.tu_ngau_nhien}</div></div>
-        </div>
-        <div class="mot_game game_random_card">
-            <div class="logo"><div class="level"></div><div class="ten_game">{language.bai_ngau_nhien}</div></div>
-        </div>
-        <div class="mot_game game_speed_number">
+        <div class="mot_game game_random_number">
             <div class="logo"><div class="level"></div><div class="ten_game">{language.so_ngau_nhien}</div></div>
-        </div>
-        <div class="mot_game game_speed_card">
-            <div class="logo"><div class="level"></div><div class="ten_game">{language.nho_bai_nhanh}</div></div>
         </div>
         <div class="mot_game game_abstract_image">
             <div class="logo"><div class="level"></div><div class="ten_game">{language.hinh_anh_truu_tuong}</div></div>
         </div>
+        <div class="mot_game game_speed_number">
+            <div class="logo"><div class="level"></div><div class="ten_game">{language.nho_so_nhanh}</div></div>
+        </div>
         <div class="mot_game game_historic_date">
             <div class="logo"><div class="level"></div><div class="ten_game">{language.nam_lich_su}</div></div>
+        </div>
+        <div class="mot_game game_random_word">
+            <div class="logo"><div class="level"></div><div class="ten_game">{language.tu_ngau_nhien}</div></div>
         </div>
         <div class="mot_game game_spoken_number">
             <div class="logo"><div class="level"></div><div class="ten_game">{language.nghe_nho_so}</div></div>
         </div>
-        <div class="mot_game game_name_face">
-            <div class="logo"><div class="level"></div><div class="ten_game">{language.ten_va_khuon_mat}</div></div>
+        <div class="mot_game game_random_card">
+            <div class="logo"><div class="level"></div><div class="ten_game">{language.bai_ngau_nhien}</div></div>
         </div>
-        <div class="clear-fix" style="clear: both;"></div>
+        <div class="mot_game game_speed_card">
+            <div class="logo"><div class="level"></div><div class="ten_game">{language.nho_bai_nhanh}</div></div>
+        </div>
         
     </div>
+    <div class="clear-fix" style="clear: both;"></div>
 </div>
 <script src="tpl/js/level.js?v={app_version}" ></script>
 <script type="text/javascript">
@@ -49,3 +49,171 @@ $(document).ready(function(){
 
 </script>
 <!-- END: main -->
+<!-- BEGIN: main2 -->
+<style type="text/css">
+    #game_area ._card_game .group_card_52 .cot{cursor: pointer;}
+</style>
+<div id="game_area">
+    <div class="_card_game game_random_card group_card_52">
+        <div class="group_card_52">
+            <div class="toolbar top"></div>
+            <div id="content"></div>
+            <div id="bobai" class="row"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var tra_loi = {
+    sobobai: 100,
+    bobai: [
+        {
+            traloi: [],
+            conlai: [],
+        }
+    ]
+}
+var bobai_imgs = [];
+bobai_imgs[52] = "tpl/images/poker_0@3x.png";
+for (var i = 1; i <= 13; i++) {
+    bobai_imgs[4*(i-1)] = "tpl/images/poker_" + i + "a@3x.png";
+    bobai_imgs[4*(i-1)+1] = "tpl/images/poker_" + i + "b@3x.png";
+    bobai_imgs[4*(i-1)+2] = "tpl/images/poker_" + i + "c@3x.png";
+    bobai_imgs[4*(i-1)+3] = "tpl/images/poker_" + i + "d@3x.png";
+}
+function khoitao(tra_loi){
+    var obj = tra_loi;
+    for (var i = 0; i < obj.sobobai; i++){
+        obj.bobai[i] = {};
+        obj.bobai[i].traloi = [];
+        obj.bobai[i].conlai = [];
+        obj.bobai[i].vitri = 0;
+        for (var j = 0; j < 52; j++){
+            obj.bobai[i].traloi[j] = -1;
+            obj.bobai[i].conlai[j] = 1;
+        }
+    }
+    return obj;
+}
+function hienthi_khoitao(obj){
+    var select_html = "";
+    var h = 0;
+    //for (var h = 0; h < obj.sobobai; h++){
+        var mot_hang = "";
+        for (var i = 0; i <= 51; i++) {
+            var idval = h*52+i;
+            var col_html = "<div class='cot' id='cot_"+idval+"' value='"+i+"' ><div class='content'><div class='image'><img src='"+bobai_imgs[52]+"'/></div></div></div>";
+            mot_hang = mot_hang + col_html;
+        }
+        $("#content").append("<div style='' class='mothang mothang_"+h+"'>"+mot_hang+"</div>");
+    for (var h = 0; h < obj.sobobai; h++){
+        select_html = select_html + "<option value='"+h+"'>Bộ bài "+h+"</option>";
+    }
+    //Lua chon bo bai
+    $(".toolbar.top").append("<select class='luachon_bobai'>"+select_html+"</select>");
+    $(".toolbar.top").append("<div style='display:none' class='xuly_mot_conbai row'><div class='action insert_left'>Insert Left</div><div class='action remove'>Remove</div><div class='action insert_right'>Insert Right</div></div>");
+
+    //Bo bai tra loi
+    var bobai_traloi = "";
+    for (var i = 0; i <= 51; i++) {
+        var idval = i;
+        var col_html = "<div class='cot' id='traloi_cot_"+idval+"' value="+idval+"><div class='content'><div class='image'><img src='"+bobai_imgs[i]+"'/></div></div></div>";
+        bobai_traloi = bobai_traloi + col_html;
+    }
+    $("#bobai").append(bobai_traloi);
+
+}
+
+function hienthi_hientrang(obj, bobai){
+    for (var i = 0; i <= 51; i++) {
+        var idval = bobai*52+i;
+        idval = i;
+        var _id = obj.bobai[bobai].traloi[i];
+        if (_id >= 0) {
+            $("#content #cot_"+idval+" img").attr("src", bobai_imgs[_id]);
+        } else {
+            $("#content #cot_"+idval+" img").attr("src", bobai_imgs[52]);
+        }
+    }
+    //Tra loi
+    for (var i = 0; i <= 51; i++) {
+        var idval = i;
+        if (obj.bobai[bobai].conlai[idval] == 1){
+            $("#bobai #traloi_cot_"+idval+" img").attr("src", bobai_imgs[idval]);
+        } else {
+            $("#bobai #traloi_cot_"+idval+" img").attr("src", bobai_imgs[52]);
+        }
+    }
+}
+
+
+$(document).ready(function(){
+    var obj = khoitao(tra_loi);
+    hienthi_khoitao(obj);
+    
+    var bb = 0;
+//    $(".mothang.mothang_" + bb).show();
+
+    $(".luachon_bobai").change(function(){
+//        $(".mothang.mothang_" + bb).hide();
+        bb = $(this).val();
+//        $(".mothang.mothang_" + bb).show();
+        hienthi_hientrang(obj, bb);
+    })
+    $("#bobai .cot").click(function(){
+        var _id = parseInt($(this).attr("value"));
+        if (obj.bobai[bb].conlai[_id] == 1){
+            if (obj.bobai[bb].traloi[obj.bobai[bb].vitri] >= 0) {
+                obj.bobai[bb].conlai[obj.bobai[bb].traloi[obj.bobai[bb].vitri]] = 1;
+            }
+
+            obj.bobai[bb].traloi[obj.bobai[bb].vitri] = _id;
+            obj.bobai[bb].conlai[_id] = 0;
+
+            hienthi_hientrang(obj, bb);
+            for (var i = obj.bobai[bb].vitri; i < 51; i++){
+                if (obj.bobai[bb].traloi[i] >= 0) obj.bobai[bb].vitri = i+1;
+            }
+        }
+    })
+    $("#content .cot").click(function(){
+        var _idval = parseInt($(this).attr("value"));
+        obj.bobai[bb].vitri = _idval;
+        $(".xuly_mot_conbai").show();
+    })
+
+    $(".remove").click(function(){
+        $(".xuly_mot_conbai").hide();        
+        var _id = obj.bobai[bb].traloi[obj.bobai[bb].vitri];
+        obj.bobai[bb].conlai[_id] = 0;
+        for (var i = obj.bobai[bb].vitri; i < 51; i++){
+            obj.bobai[bb].traloi[i] = obj.bobai[bb].traloi[i+1];
+            if (obj.bobai[bb].traloi[i] >= 0) obj.bobai[bb].vitri = i+1;
+        }
+
+        hienthi_hientrang(obj, bb);
+    })
+    $(".insert_left").click(function(){
+        $(".xuly_mot_conbai").hide();        
+        var _id = obj.bobai[bb].traloi[obj.bobai[bb].vitri];
+
+        for (var i = 51; i > obj.bobai[bb].vitri; i--){
+            obj.bobai[bb].traloi[i] = obj.bobai[bb].traloi[i-1];
+        }
+        obj.bobai[bb].traloi[i] = -1;
+        hienthi_hientrang(obj, bb);
+    })
+    $(".insert_right").click(function(){
+        $(".xuly_mot_conbai").hide();        
+        var _id = obj.bobai[bb].traloi[obj.bobai[bb].vitri];
+
+        for (var i = 51; i > obj.bobai[bb].vitri+1; i--){
+            obj.bobai[bb].traloi[i] = obj.bobai[bb].traloi[i-1];
+        }
+        obj.bobai[bb].traloi[i] = -1;
+        obj.bobai[bb].vitri++;
+        hienthi_hientrang(obj, bb);
+    })
+    
+})
+</script>
+<!-- END: main2 -->

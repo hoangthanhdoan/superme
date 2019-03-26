@@ -449,4 +449,4 @@ a:hover{text-decoration: unset;}
     float: left;
 }
 
-#level_area {height: 80%}
+#level_area {min-height: 80%}

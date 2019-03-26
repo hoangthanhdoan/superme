@@ -76,7 +76,7 @@
     font-size: x-large;
     font-weight: bold;
 }
-#game_area .toolbar .boqua, #game_area .toolbar .ketthuc{
+#game_area .toolbar .boqua, #game_area .toolbar .ketthuc, #game_area .toolbar .button{
     /*color: transparent;*/
     width:100px;
     height: 30px;
@@ -123,7 +123,7 @@
     color: #000;
 }
 
-#game_area select.action.chia_nhom {
+#game_area select.action {
     /*background: transparent center center url(../images/display_mode.svg) no-repeat;
     background-size: 100%;
     border-radius: 15px;*/
@@ -308,6 +308,25 @@
     margin: auto;
 }
 
+#game_area ._card_game .group_card_52 .mothang, #bobai{
+    width: 100%;
+    height: 150px;
+}
+#game_area ._card_game .group_card_52 .cot{
+    width: 1.5%;
+    margin: auto;
+}
+#game_area ._card_game .group_card_52 .motcot:hover, 
+#game_area ._card_game .group_card_52 .motcot.duocchon,
+#game_area ._card_game .group_card_52 #bobai .cot.duocchon,
+#game_area ._card_game .group_card_52 #bobai .cot:hover
+{
+    margin-top: 0px;
+}
+#game_area ._card_game .group_card_52 img{
+    width: 80px;
+}
+
 #game_area ._card_game .chon_bo_bai {
     padding: 0px 8px;
     border: 1px solid #999;
@@ -317,4 +336,17 @@
 #game_area ._card_game .chon_bo_bai.duocchon, #game_area ._card_game .chon_bo_bai:hover{
     background: #999;
     color: #fff;
+}
+
+#game_area ._card_game .group_card_52.game_embed #content{
+    height: 50%;
+}
+#game_area ._card_game .group_card_52 .cot{
+    cursor: pointer;
+}
+#game_area select.action.luachon_bobai{
+    margin-right: 0px;
+}
+#bobai{
+    width:790px;
 }

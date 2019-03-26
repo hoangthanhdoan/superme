@@ -77,4 +77,8 @@ $language["thoi_gian_tao"] = "Created time";
 $language["thong_bao_bo_qua_sang_tra_loi"] = "Are you ready to answer the questions?";
 $language["thong_bao_bo_qua_de_ket_thuc"] = "Are you sure you want to finish this exam?";
 $language["tieu_de_ung_dung"] = "SuperMe: Super memory";
+$language["bo_bai"] = "Deck of cards";
+$language["chen_phai"] = "Insert right";
+$language["chen_trai"] = "Insert left";
+$language["xoa"] = "Remove";
 ?>

@@ -1,25 +1,8 @@
-
-var mylevel = {
-    total: 1,
-    game_random_number: 2,
-    game_random_binary: 3,
-    game_random_word: 3,
-    game_random_card: 3,
-    game_speed_number: 3,
-    game_speed_card: 3,
-    game_abstract_image: 3,
-    game_historic_date: 3,
-    game_spoken_number: 3,
-    game_name_face: 4
-}
-
-Object.keys(mylevel).forEach(function(k){
-    //$("." + user_logined.email + " .level").append(mylevel[k]);
-    //window.alert(user_logined.email);
-});
-
+var chuashow = true;
 
 function logined(user){
+    if (!user) return;
+    chuashow = false;
     REQUEST_GET_PROFILE_REQUEST({ content: {email: user.email} }, function(rs){
         var objs = JSON.parse(rs);
         var data = objs.content.array;
@@ -37,6 +20,23 @@ function logined(user){
             "callback":function(dict){
                 //dọc từ trong dict này ra để hiển thị lên giao diện
                 console.log(dict);
+                var mylevel = {
+                    total: dict.level,
+                    game_random_number: dict.level_rn,
+                    game_random_binary: dict.level_bn,
+                    game_random_word: dict.level_rw,
+                    game_random_card: dict.level_rc,
+                    game_speed_number: dict.level_sn,
+                    game_speed_card: dict.level_sc,
+                    game_abstract_image: dict.level_ai,
+                    game_historic_date: dict.level_hfd,
+                    game_spoken_number: dict.level_spn,
+                    game_name_face: dict.level_naf
+                }
+
+                Object.keys(mylevel).forEach(function(k){
+                    $("." + k + " .level").append(mylevel[k]);
+                });
             },
             "failCallback":function(message){
                 window.alert(message);  
@@ -69,5 +69,6 @@ function requestProfile(para){
 };
 
 
-
-
+$("document").ready(function(){
+    if (chuashow) logined(user_logined);
+})

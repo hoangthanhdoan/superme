@@ -78,4 +78,8 @@ thoi_gian_tao: "Thời gian tạo",
 thong_bao_bo_qua_sang_tra_loi: "Bạn đã sẵn sàng chuyển sang phần Trả lời?",
 thong_bao_bo_qua_de_ket_thuc: "Bạn muốn kết thúc bài thi này?",
 tieu_de_ung_dung: "SuperMe: Siêu trí nhớ",
+bo_bai: "Bộ bài",
+chen_phai: "Chèn phải",
+chen_trai: "Chèn trái",
+xoa: "Xóa",
 dfsdf: 1}
