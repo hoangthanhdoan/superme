@@ -254,7 +254,7 @@ class Game_controller{
                     var col_html = this.draw_question_answer_an_element(r, c);
                     row_html = row_html + col_html;
                     
-                    para.matrix_answer[r][c] = {title:-1, obj: null, id: "input_"+index};
+                    para.matrix_answer[r][c] = {title:-1, obj: null, id: "input_"+index, id2: "input2_"+index};
                 }
             }
             var _tmp = r; _tmp++;
@@ -266,6 +266,7 @@ class Game_controller{
                 var index = para.col*r+c;
                 if (index<para.count){
                     para.matrix_answer[r][c].obj = $("#" + para.matrix_answer[r][c].id);
+                    para.matrix_answer[r][c].obj2 = $("#" + para.matrix_answer[r][c].id2);
                 }
             }
         }
@@ -384,10 +385,12 @@ class Game_controller{
                         if (index<count){
                             var questionItemDict = questions.items[index];
                             var obj_col = para.matrix_answer[r][c].obj;
+                            var obj_col2 = para.matrix_answer[r][c].obj2;
                             
-                            var value = para.matrix_question[r][c].title;
+                            
 
                             if (obj_col){
+                                var value = para.matrix_question[r][c].title;
                                 obj_col.attr("title", value);
                                 obj_col.attr("placeholder", value);
 
@@ -399,6 +402,23 @@ class Game_controller{
                                 }else{
                                     obj_col.removeClass("dung");
                                     obj_col.addClass("sai");
+                                    
+                                    console.log("["+r+","+c+"] sai");
+                                }
+                            }
+                            if (obj_col2){
+                                var value = para.matrix_question[r][c].subtitle;
+                                obj_col2.attr("title", value);
+                                obj_col2.attr("placeholder", value);
+
+                                if (questionItemDict.correct){
+                                    obj_col2.removeClass("sai");
+                                    obj_col2.addClass("dung");
+                                    
+                                    console.log("["+r+","+c+"] dung");
+                                }else{
+                                    obj_col2.removeClass("dung");
+                                    obj_col2.addClass("sai");
                                     
                                     console.log("["+r+","+c+"] sai");
                                 }

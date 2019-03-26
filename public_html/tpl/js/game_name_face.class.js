@@ -101,7 +101,12 @@ class Game_name_face extends Game_images{
          
         var col = obj_result.attr("col");
         var row = obj_result.attr("row");
-        this.para.matrix_answer[row][col].title = obj_result.val();
+        if (idval%2){
+            this.para.matrix_answer[row][col].subtitle = obj_result.val();
+        }else{
+            this.para.matrix_answer[row][col].title = obj_result.val();
+        }
+        
         
         $('.traloi input[idval='+idval+']').focus();
     }
