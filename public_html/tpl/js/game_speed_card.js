@@ -17,13 +17,13 @@ $(document).ready(function(){
             console.log(para.message);
         }
     }
-    var game = new Game_random_card(para);
+    var game = new Game_speed_card(para);
     game.start();
 
 
     var cot_objs = [];
     setTimeout(function(){
-        for (var i = 0; i < 100; i++){
+        for (var i = 0; i < 1; i++){
             for (var j = 1; j <= 52; j++){
                 var n = i*52 + j;
                 cot_objs[n] = para.obj_exam_scr.find("#cot_" + n);
@@ -40,9 +40,9 @@ $(document).ready(function(){
     para.obj_exam_scr.find("#content").after("<div id='right' class='pointer next col-1'>Next</div>");
     para.obj_exam_scr.find("#content").addClass("col-sm");
     
-    for (var i = 1; i <= 100; i++){
-        bottom_obj.append("<div class='chon_bo_bai pointer' value='"+i+"'>"+i+"</div>");
-    }
+    // for (var i = 1; i <= 100; i++){
+    //     bottom_obj.append("<div class='chon_bo_bai pointer' value='"+i+"'>"+i+"</div>");
+    // }
     $("select option[value=0]").remove();
     $("._card_game").addClass("group_card_1");
     $(".action.chia_nhom").unbind("change");

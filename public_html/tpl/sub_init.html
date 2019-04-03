@@ -37,6 +37,7 @@
 
 <script src="tpl/js/language.{language_code}.js?v={app_version}" ></script>
 <script src="tpl/js/user.js" ></script>
+<script src="tpl/js/mobile.js?v={app_version}" ></script>
 
 <script src="http://api.memorybooster.top/js/data_1_5.js?v={app_version}" ></script>
 <script src="tpl/js/sub_server.js?v={app_version}" ></script>
@@ -92,7 +93,7 @@ $(document).ready(function(){
             var data = objs.content.array;
             
             if (data[0].active_type != 1 && data[0].active_type != 2) {
-                $.ajax({url: "level.php?embed=true", success: function(result){
+                $.ajax({url: "cankichhoat.php?embed=true", success: function(result){
                     $("#wrapper").html(result);
                     $("#wrapper").show();
                     
@@ -156,24 +157,38 @@ $(document).ready(function(){
 
         $(".action.login").unbind("click");
         $(".action.login").click(function(){
+            console.log(provider);
             firebase.auth().signInWithRedirect(provider);
-            firebase.auth().getRedirectResult(provider).then(function(result) {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                var token = result.credential.accessToken;
-                // The signed-in user info.
-                var user = result.user;
-                // ...
-            }).catch(function(error) {
-                // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                // The email of the user's account used.
-                var email = error.email;
-                // The firebase.auth.AuthCredential type that was used.
-                var credential = error.credential;
-                // ...
-                console.log(errorMessage);
-            });
+            /**/
+            try{
+                firebase.auth().getRedirectResult().then(function(result) {
+                    console.log("Redirect thanh cong");
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    var token = result.credential.accessToken;
+                    // The signed-in user info.
+                    var user = result.user;
+                    // ...
+                    
+                })
+                .catch(function(error) {
+                    console.log("login: errorMessage");
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // The email of the user's account used.
+                    var email = error.email;
+                    // The firebase.auth.AuthCredential type that was used.
+                    var credential = error.credential;
+                    // ...
+                    console.log(errorMessage);
+                });
+                /**/
+            }catch(e){
+                console.log("Loi ne");
+                console.log(e);
+                window.stop;
+            }
+            /**/
         })
 
     }
@@ -185,6 +200,7 @@ $(document).ready(function(){
             action_logout(user);
             
         } else {
+            console.log(user);
             $("#wrapper").html("<div class='tieu_de_can_login action login'>Need to login!</div>");
             action_login();
             $.ajax({url: "login.php?embed=true", success: function(result){

@@ -81,4 +81,5 @@ bo_bai: "Deck of cards",
 chen_phai: "Insert right",
 chen_trai: "Insert left",
 xoa: "Remove",
+cai_dat_ung_dung: "Download it from Google Play and Apple Store",
 dfsdf: 1}

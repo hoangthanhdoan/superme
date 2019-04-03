@@ -82,4 +82,5 @@ bo_bai: "Bộ bài",
 chen_phai: "Chèn phải",
 chen_trai: "Chèn trái",
 xoa: "Xóa",
+cai_dat_ung_dung: "Giữ kết nối với chúng tôi và Luyện tập thường xuyên mỗi ngày từ Ứng dụng đã có mặt trên Google Play và Apple Store",
 dfsdf: 1}

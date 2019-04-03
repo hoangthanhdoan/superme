@@ -81,4 +81,5 @@ $language["bo_bai"] = "Deck of cards";
 $language["chen_phai"] = "Insert right";
 $language["chen_trai"] = "Insert left";
 $language["xoa"] = "Remove";
+$language["cai_dat_ung_dung"] = "Download it from Google Play and Apple Store";
 ?>

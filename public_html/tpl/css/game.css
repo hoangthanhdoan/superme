@@ -76,7 +76,7 @@
     font-size: x-large;
     font-weight: bold;
 }
-#game_area .toolbar .boqua, #game_area .toolbar .ketthuc, #game_area .toolbar .button{
+#game_area .toolbar .boqua, #game_area .toolbar .ketthuc, #game_area .toolbar .button, .action.button{
     /*color: transparent;*/
     width:100px;
     height: 30px;
@@ -238,7 +238,7 @@
 }
 
 #game_area ._card_game .cot .content:hover{
-    background: #f00;
+    /*background: #f00;*/
 }
 
 #game_area ._card_game .cot .content{
@@ -322,6 +322,7 @@
 #game_area ._card_game .group_card_52 #bobai .cot:hover
 {
     margin-top: 0px;
+    height: 100%;
 }
 #game_area ._card_game .group_card_52 img{
     width: 80px;
@@ -349,4 +350,8 @@
 }
 #bobai{
     width:790px;
+}
+.motcot.dung{
+    border: 2px solid green;
+    border-radius: 10px;
 }

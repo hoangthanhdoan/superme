@@ -7,4 +7,15 @@
         <div class="action login">{language.dang_nhap_voi}</div>
     </div>
 </div>
+<script>
+$(document).ready(function(){
+    firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        console.log("Dang xuat thanh cong");
+    }).catch(function(error) {
+        // An error happened.
+        console.log("Dang xuat bi loi");
+    });
+})
+</script>
 <!-- END: main -->

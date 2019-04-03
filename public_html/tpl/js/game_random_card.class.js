@@ -4,7 +4,7 @@ class Game_random_card extends Game_images{
         if (para == null) para = {};
         if (para.type == null) para.type = 0;
         para.game_mode = parseInt(para.type);
-        para.game_type = get_game_type("game_random_card");
+        if (!para.hasOwnProperty("game_type")) para.game_type = get_game_type("game_random_card");
         
         super(para);
         

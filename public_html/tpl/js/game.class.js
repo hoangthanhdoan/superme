@@ -29,6 +29,8 @@ class Game_controller{
         if (para.time_exam_remember == null) para.time_exam_remember = 15*60;
         if (para.time_question_answer == null) para.time_question_answer = 30*60;
         if (para.quantity == null) para.quantity = 15;
+        para.time_exam_remember_actual = 0;
+        para.time_question_answer_actual = 0;
         
         if (para.audio_warning == null) para.audio_warning = true;
         
@@ -179,7 +181,10 @@ class Game_controller{
         }
         
         this.obj_info_scr.find(".action.boqua").unbind("click");
-        this.obj_info_scr.find(".action.boqua").click(function(){setTimeout(function(){boqua();},2000)})
+        this.obj_info_scr.find(".action.boqua").click(function(){
+            $(this).hide();
+            setTimeout(function(){boqua();},2000)}
+        )
         this.obj_info_scr.show();
         
         try {para.finished(para);} catch(e){}
@@ -254,7 +259,7 @@ class Game_controller{
                     var col_html = this.draw_question_answer_an_element(r, c);
                     row_html = row_html + col_html;
                     
-                    para.matrix_answer[r][c] = {title:-1, obj: null, id: "input_"+index, id2: "input2_"+index};
+                    para.matrix_answer[r][c] = {title:-1, obj: null, card:"card_"+index, id: "input_"+index, id2: "input2_"+index};
                 }
             }
             var _tmp = r; _tmp++;
@@ -267,6 +272,7 @@ class Game_controller{
                 if (index<para.count){
                     para.matrix_answer[r][c].obj = $("#" + para.matrix_answer[r][c].id);
                     para.matrix_answer[r][c].obj2 = $("#" + para.matrix_answer[r][c].id2);
+                    para.matrix_answer[r][c].card = $("#" + para.matrix_answer[r][c].card);
                 }
             }
         }
@@ -386,9 +392,35 @@ class Game_controller{
                             var questionItemDict = questions.items[index];
                             var obj_col = para.matrix_answer[r][c].obj;
                             var obj_col2 = para.matrix_answer[r][c].obj2;
+                            var obj_col_card = para.matrix_answer[r][c].card;
                             
-                            
+                            console.log("["+r+","+c+"] dung");
+                            console.log(obj_col_card);
 
+                            if (obj_col_card){
+                                var value = para.matrix_question[r][c].title;
+                                // obj_col.attr("title", value);
+                                // obj_col.attr("placeholder", value);
+
+                                if (questionItemDict.correct){
+                                    para.matrix_answer[r][c].correct = 1;
+
+                                    //console.log("DUng roi day");
+                                    // obj_col.removeClass("sai");
+                                    // obj_col.addClass("dung");
+                                    //obj_col_card.css("border","2px solid green");
+                                    
+                                    //console.log("["+r+","+c+"] dung");
+                                }else{
+                                    para.matrix_answer[r][c].correct = 0;
+                                    //console.log("Sai nha");
+                                    //obj_col_card.css("border","2px solid red");
+                                    // obj_col.removeClass("dung");
+                                    // obj_col.addClass("sai");
+                                    //obj_col.attr("title", value);
+                                    //console.log("["+r+","+c+"] sai");
+                                }
+                            }
                             if (obj_col){
                                 var value = para.matrix_question[r][c].title;
                                 obj_col.attr("title", value);
@@ -527,7 +559,10 @@ class Game_controller{
                 clearInterval(obj_this.interval);
                 obj_this.interval = obj_this.obj_exam_scr.find(".display.clock").countdown({
                     from: obj_this.para.time_exam_remember,
-                    speaking_minute: obj_this.para.audio_warning, 
+                    speaking_minute: obj_this.para.audio_warning,
+                    step: function(rs){
+                        obj_this.para.time_exam_remember_actual = rs.from
+                    },
                     finished: function(){
                         obj_this.obj_exam_scr.hide();
                         obj_this.question_answer_start();
@@ -550,6 +585,9 @@ class Game_controller{
         obj_this.interval = obj_this.obj_question_scr.find(".display.clock").countdown({
             from: obj_this.para.time_question_answer, 
             speaking_minute: true,
+            step: function(rs){
+                obj_this.para.time_question_answer_actual = rs.from
+            },      
             finished: function(){
                 obj_this.checkmark_start();
             }
@@ -583,6 +621,11 @@ class Game_controller{
             	});
             })
             para.obj_question_scr.find(".display.mark").find("span").text(p.diem);
+            
+            //Doan bo cai nay
+            para.obj_question_scr.find(".display.mark").find("span").append( "tg nho: " + para.time_exam_remember_actual );
+            para.obj_question_scr.find(".display.mark").find("span").append( "tg tra loi" + para.time_question_answer_actual );
+            
         }});
     }
     
@@ -602,7 +645,7 @@ class Game_controller{
                 para.finished = function(){console.log("ve xong exam");
                     obj_this.para.obj_exam_scr.find(".action.boqua").unbind("click");
                     obj_this.para.obj_exam_scr.find(".action.boqua").click(function(){
-                        console.log("la sao====");
+                        $(this).hide();
                         if (confirm(language.thong_bao_bo_qua_sang_tra_loi)) setTimeout(function(){obj_this.question_answer_start();}, 100);
                     })
                     
@@ -610,6 +653,7 @@ class Game_controller{
                         para.obj_question_scr.find(".action.boqua").unbind("click");
                         para.obj_question_scr.find(".action.boqua").click(function(){
                             if (confirm(language.thong_bao_bo_qua_de_ket_thuc)) setTimeout(function(){obj_this.checkmark_start();}, 50);
+                            $(this).hide();
                         })
                         para.finished = null;
                     }
@@ -641,6 +685,7 @@ class Game_controller{
                 totalSeconds %= 3600;
                 var minute = Math.floor(totalSeconds / 60);
                 var second = totalSeconds % 60;
+                try {para.step(para);} catch(e){}
                 
                 obj_result.html(hour + ":" + minute + ":" + second);
                 para.from--;
@@ -648,10 +693,12 @@ class Game_controller{
                     //window.alert("countdown van con hoat dong");
                     setTimeout(function(){Play_audio._minute(minute);}, 1000);
                 }
+               
             }else {
                 clearInterval(interval);
                 try {para.finished(para);} catch(e){}
             }
+            
         }, 1000);
         
         return interval;
