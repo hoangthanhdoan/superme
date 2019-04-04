@@ -77,6 +77,7 @@ function handle_answer_input_keyup(obj_result, e, para){
     } else {
         obj_result.val( obj_result.attr("old") );
     } 
+    
     var col = obj_result.attr("col");
     var row = obj_result.attr("row");
     

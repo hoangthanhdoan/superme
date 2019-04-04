@@ -102,7 +102,7 @@ class Game_historic_date extends Game_controller{
         }
         
         /** Begin: dam bao la so **/
-        var giatri = parseInt(e.key);
+        var giatri = obj_result.val();//parseInt(e.key);
         if (!isNaN(giatri)) {//console.log("la so");
             obj_result.attr("old", obj_result.val() );
         } else { //console.log("la chu");

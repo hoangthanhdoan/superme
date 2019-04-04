@@ -330,6 +330,7 @@ class Game_controller{
         } else {
               obj_result.val( obj_result.attr("old") );
         } 
+        
         var col = obj_result.attr("col");
         var row = obj_result.attr("row");
         this.para.matrix_answer[row][col].title = obj_result.val();
