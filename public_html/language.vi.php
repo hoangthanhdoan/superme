@@ -83,4 +83,12 @@ $language["chen_phai"] = "Chèn phải";
 $language["chen_trai"] = "Chèn trái";
 $language["xoa"] = "Xóa";
 $language["cai_dat_ung_dung"] = "Giữ kết nối với chúng tôi và Luyện tập thường xuyên mỗi ngày từ Ứng dụng đã có mặt trên Google Play và Apple Store";
+$language["can_kich_hoat"] = "Chức năng này chỉ dành cho học viên Combo của matmatainang.vn. Vui lòng đăng ký ngay để nhận được ứng dụng";
+$language["dang_ky"] = "Đăng ký";
+$language["ban_dang_o_level"] = "Bạn đang ở cấp độ";
+$language["ban_vua_dat_duoc_cap_do"] = "XIN CHÚC MỪNG<br/><br/>Bạn vừa đạt được cấp độ";
+$language["de_dat_duoc_cap_do_tiep_theo"] = "Để đạt được cấp độ tiếp theo, bạn cần Hoàn Thành được các mục tiêu chưa đạt bên dưới";
+$language["trang_thai"] = "Trạng thái";
+$language["chua_hoan_thanh"] = "Chưa đạt";
+$language["hoan_thanh"] = "Hoàn thành";
 ?>

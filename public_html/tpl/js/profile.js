@@ -12,7 +12,8 @@ function show_profile(profile){
         var background_size = "100px";
         $("#profile_area .banner").css("background", background);
         $("#profile_area .banner").css("background-size", background_size);
-            
+        console.log("xu ly tam ne");
+        try{xulytam(profile)}catch(e){}
 }
 var chuashow = true;
 

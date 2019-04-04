@@ -68,12 +68,12 @@ class Game_historic_date extends Game_controller{
         
         var giatrithiet = false;
         switch (e.keyCode) {
-            case Key._keycode_backspace:
+            /*case Key._keycode_backspace:
                 if (obj_result.val() == "") {
                     obj_result.attr("old", "");idval--;
                 }
                 break;
-            case Key._keycode_enter:
+            */case Key._keycode_enter:
                 idval++;
                 break;
             case Key._keycode_escape:
@@ -91,13 +91,13 @@ class Game_historic_date extends Game_controller{
             case Key._keycode_down_arrow:
                 idval++;
                 break;
-            case Key._keycode_delete:
+            /*case Key._keycode_delete:
                 if (obj_result.val() == "") {
                     obj_result.attr("old", "");
                     idval++;
                 }
                 break;
-            default:
+            */default:
                 giatrithiet = true;
         }
         
@@ -106,7 +106,7 @@ class Game_historic_date extends Game_controller{
         if (!isNaN(giatri)) {//console.log("la so");
             obj_result.attr("old", obj_result.val() );
         } else { //console.log("la chu");
-            obj_result.val( obj_result.attr("old") );
+            if (giatrithiet) obj_result.val( obj_result.attr("old") );
         } 
         /** Begin: dam bao la so **/
         

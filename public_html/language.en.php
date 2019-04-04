@@ -82,4 +82,12 @@ $language["chen_phai"] = "Insert right";
 $language["chen_trai"] = "Insert left";
 $language["xoa"] = "Remove";
 $language["cai_dat_ung_dung"] = "Download it from Google Play and Apple Store";
+$language["can_kich_hoat"] = "This function is only for Combo students of matmatainang.vn. Please register now to receive the application";
+$language["dang_ky"] = "Register";
+$language["ban_dang_o_level"] = "Your current level is";
+$language["ban_vua_dat_duoc_cap_do"] = "CONGRATULATIONS<br/><br/>You have just level up to";
+$language["de_dat_duoc_cap_do_tiep_theo"] = "To level up, you must complete below:";
+$language["trang_thai"] = "Status";
+$language["chua_hoan_thanh"] = "Not passed";
+$language["hoan_thanh"] = "Passed";
 ?>

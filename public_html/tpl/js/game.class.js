@@ -428,7 +428,12 @@ class Game_controller{
                                 obj_col.attr("title", value);
                                 obj_col.attr("placeholder", value);
 
-                                if (questionItemDict.correct){
+                                if (obj_col2 && questionItemDict.correct1){
+                                    obj_col.removeClass("sai");
+                                    obj_col.addClass("dung");
+                                    
+                                    console.log("["+r+","+c+"] dung");
+                                }else if (questionItemDict.correct){
                                     obj_col.removeClass("sai");
                                     obj_col.addClass("dung");
                                     
@@ -445,7 +450,7 @@ class Game_controller{
                                 obj_col2.attr("title", value);
                                 obj_col2.attr("placeholder", value);
 
-                                if (questionItemDict.correct){
+                                if (questionItemDict.correct2){
                                     obj_col2.removeClass("sai");
                                     obj_col2.addClass("dung");
                                     

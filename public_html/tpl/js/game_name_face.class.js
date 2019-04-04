@@ -66,12 +66,13 @@ class Game_name_face extends Game_images{
         
         var giatrithiet = false;
         switch (e.keyCode) {
+            /*
             case Key._keycode_backspace:
                 if (obj_result.val() == "") {
                     obj_result.attr("old", "");idval--;
                 }
                 break;
-            case Key._keycode_enter:
+            */case Key._keycode_enter:
                 idval++;
                 break;
             case Key._keycode_escape:
@@ -89,13 +90,13 @@ class Game_name_face extends Game_images{
             case Key._keycode_down_arrow:
                 idval++;
                 break;
-            case Key._keycode_delete:
+            /*case Key._keycode_delete:
                 if (obj_result.val() == "") {
                     obj_result.attr("old", "");
                     idval++;
                 }
                 break;
-            default:
+            */default:
                 giatrithiet = true;
         }
          

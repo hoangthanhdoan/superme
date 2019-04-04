@@ -33,11 +33,13 @@ class Game_random_word extends Game_controller{
         
         var giatrithiet = false;
         switch (e.keyCode) {
+            /*
             case Key._keycode_backspace:
                 if (obj_result.val() == "") {
                     obj_result.attr("old", "");idval--;
                 }
                 break;
+                */
             case Key._keycode_enter:
                 idval++;
                 break;
@@ -56,12 +58,14 @@ class Game_random_word extends Game_controller{
             case Key._keycode_down_arrow:
                 idval++;
                 break;
+            /*
             case Key._keycode_delete:
                 if (obj_result.val() == "") {
                     obj_result.attr("old", "");
                     idval++;
                 }
                 break;
+                */
             default:
                 giatrithiet = true;
         }
