@@ -372,7 +372,9 @@ class Game_controller{
             }
         }
 
-
+        questions.memoryTime = gameInfo.readExamTime - para.time_exam_remember_actual;
+        questions.recallTime = gameInfo.answerTime - para.time_question_answer_actual;
+        
 
         //tinh diem 
         var local_server = new Local_Server();
@@ -622,9 +624,7 @@ class Game_controller{
             })
             para.obj_question_scr.find(".display.mark").find("span").text(p.diem);
             
-            //Doan bo cai nay
-            para.obj_question_scr.find(".display.mark").find("span").append( "tg nho: " + para.time_exam_remember_actual );
-            para.obj_question_scr.find(".display.mark").find("span").append( "tg tra loi" + para.time_question_answer_actual );
+            
             
         }});
     }
